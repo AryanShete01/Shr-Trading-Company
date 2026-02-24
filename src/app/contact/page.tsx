@@ -202,17 +202,17 @@ export default function ContactPage() {
                             {/* Map Overlay Image or Placeholder Background */}
                             <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=2066')] bg-cover bg-center opacity-40"></div>
                         </div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 sm:from-slate-950/80 via-slate-900/40 sm:via-transparent to-transparent flex items-end justify-center p-6 sm:p-12 md:p-20">
-                            <div className="glass rounded-[2.5rem] sm:rounded-[3rem] p-8 sm:p-12 max-w-2xl text-center border-white/20 shadow-2xl backdrop-blur-2xl">
-                                <h4 className="text-2xl sm:text-3xl font-black text-white mb-3 sm:mb-4 tracking-tighter leading-tight">LOCAL HUB LOGISTICS</h4>
-                                <p className="text-slate-300 font-medium mb-8 sm:mb-10 leading-relaxed text-sm sm:text-base">
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent flex items-center justify-center p-6 sm:p-12 md:p-20">
+                            <div className="bg-white/95 rounded-[2.5rem] sm:rounded-[3rem] p-8 sm:p-12 max-w-2xl text-center border border-slate-200 shadow-2xl backdrop-blur-2xl hover:scale-105 transition-transform duration-700">
+                                <h4 className="text-2xl sm:text-3xl font-black text-slate-950 mb-3 sm:mb-4 tracking-tighter leading-tight">LOCAL HUB LOGISTICS</h4>
+                                <p className="text-slate-600 font-medium mb-8 sm:mb-10 leading-relaxed text-sm sm:text-base">
                                     Located strategically on the Akole-Sangamner highway for rapid distribution & logistics. Visit our showroom for physical inspection.
                                 </p>
                                 <a
                                     href="https://maps.app.goo.gl/KcAirQutM5FjJBUGA"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex w-full sm:w-auto items-center justify-center gap-3 bg-white text-slate-950 px-8 sm:px-12 py-5 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] hover:bg-orange-600 hover:text-white transition-all shadow-xl"
+                                    className="inline-flex w-full sm:w-auto items-center justify-center gap-3 bg-slate-950 text-white px-8 sm:px-12 py-5 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] hover:bg-orange-600 hover:text-white transition-all shadow-xl hover:-translate-y-1"
                                 >
                                     NAVIGATE TO STORE <MapPin size={16} />
                                 </a>
