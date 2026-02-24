@@ -1,0 +1,7 @@
+import { deleteProduct } from "@/lib/actions";
+import { Trash2 } from "lucide-react";
+import { toast } from "react-hot-toast";
+
+// I'll update the main dashboard to use a Client Component for the delete button if needed, 
+// but for now I'll just make a simple wrapper.
+// Actually, I'll just use a form with action in the table.
