@@ -75,7 +75,7 @@ export default function AboutPage() {
                             <div className="absolute inset-0 bg-orange-600 rounded-[4rem] rotate-3 scale-105 opacity-5 group-hover:rotate-0 transition-transform duration-700"></div>
                             <div className="relative aspect-[4/3] rounded-[4rem] overflow-hidden shadow-3xl bg-slate-100">
                                 <img
-                                    src="https://images.unsplash.com/photo-1572044161570-5c6c06df266f?q=80&w=2070"
+                                    src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070"
                                     alt="Legacy Workspace"
                                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                                 />
