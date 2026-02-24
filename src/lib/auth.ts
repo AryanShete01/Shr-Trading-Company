@@ -37,16 +37,4 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     pages: {
         signIn: "/admin/login",
     },
-    callbacks: {
-        authorized({ auth, request: { nextUrl } }) {
-            const isLoggedIn = !!auth?.user;
-            const isAdminRoute = nextUrl.pathname.startsWith("/admin");
-
-            if (isAdminRoute && nextUrl.pathname !== "/admin/login") {
-                if (isLoggedIn) return true;
-                return false; // Redirect to login
-            }
-            return true;
-        },
-    },
 });
