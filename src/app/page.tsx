@@ -130,14 +130,15 @@ export default function Home() {
             {trustBadges.map((badge, i) => (
               <div
                 key={badge.title}
-                className="glass rounded-[2rem] sm:rounded-[3rem] p-8 sm:p-10 border border-white/10 shadow-2xl hover-lift group animate-in"
+                className="bg-white rounded-[2rem] sm:rounded-[3rem] p-8 sm:p-10 border border-slate-100 shadow-2xl hover:shadow-3xl hover:-translate-y-4 transition-all duration-500 group relative overflow-hidden animate-in fade-in slide-in-from-bottom-10"
                 style={{ animationDelay: `${i * 150}ms` }}
               >
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-orange-600/10 flex items-center justify-center text-orange-600 mb-6 sm:mb-8 group-hover:scale-110 transition-transform duration-500">
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-orange-50 flex items-center justify-center text-orange-600 mb-6 sm:mb-8 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 relative z-10">
                   {badge.icon}
                 </div>
-                <h3 className="text-xl sm:text-2xl font-black text-slate-900 mb-3 sm:mb-4 tracking-tight">{badge.title}</h3>
-                <p className="text-slate-500 font-medium leading-relaxed">
+                <h3 className="text-xl sm:text-2xl font-black text-slate-900 mb-3 sm:mb-4 tracking-tight relative z-10">{badge.title}</h3>
+                <p className="text-slate-500 font-medium leading-relaxed relative z-10">
                   {badge.desc}
                 </p>
               </div>
