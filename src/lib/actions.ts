@@ -3,8 +3,7 @@
 import prisma from "./prisma";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import fs from "fs/promises";
-import path from "path";
+import { supabase } from "./supabase";
 
 export async function createProduct(formData: FormData) {
     const name = formData.get("name") as string;
@@ -15,15 +14,24 @@ export async function createProduct(formData: FormData) {
     let imageUrl = "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070";
 
     if (imageFile && imageFile.size > 0 && typeof imageFile !== "string") {
-        const buffer = Buffer.from(await imageFile.arrayBuffer());
-        const filename = `${Date.now()}-${imageFile.name.replace(/\s+/g, "-")}`;
-        const uploadDir = path.join(process.cwd(), "public", "uploads");
+        const fileExt = imageFile.name.split('.').pop();
+        const fileName = `${Math.random()}.${fileExt}`;
+        const filePath = `${fileName}`;
 
-        // Ensure directory exists
-        await fs.mkdir(uploadDir, { recursive: true });
+        const { error: uploadError } = await supabase.storage
+            .from('products')
+            .upload(filePath, imageFile, {
+                cacheControl: '3600',
+                upsert: false
+            });
 
-        await fs.writeFile(path.join(uploadDir, filename), buffer);
-        imageUrl = `/uploads/${filename}`;
+        if (uploadError) {
+            console.error("Supabase upload error:", uploadError);
+            throw new Error("Failed to upload image");
+        }
+
+        const { data } = supabase.storage.from('products').getPublicUrl(filePath);
+        imageUrl = data.publicUrl;
     } else if (typeof imageFile === "string" && imageFile) {
         imageUrl = imageFile;
     }
@@ -52,12 +60,24 @@ export async function updateProduct(id: string, formData: FormData) {
     let imageUrl: string | undefined;
 
     if (imageFile && imageFile.size > 0 && typeof imageFile !== "string") {
-        const buffer = Buffer.from(await imageFile.arrayBuffer());
-        const filename = `${Date.now()}-${imageFile.name.replace(/\s+/g, "-")}`;
-        const uploadDir = path.join(process.cwd(), "public", "uploads");
-        await fs.mkdir(uploadDir, { recursive: true });
-        await fs.writeFile(path.join(uploadDir, filename), buffer);
-        imageUrl = `/uploads/${filename}`;
+        const fileExt = imageFile.name.split('.').pop();
+        const fileName = `${Math.random()}.${fileExt}`;
+        const filePath = `${fileName}`;
+
+        const { error: uploadError } = await supabase.storage
+            .from('products')
+            .upload(filePath, imageFile, {
+                cacheControl: '3600',
+                upsert: false
+            });
+
+        if (uploadError) {
+            console.error("Supabase upload error:", uploadError);
+            throw new Error("Failed to upload image");
+        }
+
+        const { data } = supabase.storage.from('products').getPublicUrl(filePath);
+        imageUrl = data.publicUrl;
     } else if (typeof imageFile === "string" && imageFile) {
         imageUrl = imageFile;
     }
