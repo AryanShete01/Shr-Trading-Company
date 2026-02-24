@@ -197,13 +197,13 @@ export default function ContactPage() {
             {/* Industrial Map Section */}
             <section className="mb-40">
                 <div className="standard-container">
-                    <div className="bg-slate-100 rounded-[3rem] md:rounded-[5rem] overflow-hidden relative aspect-[4/3] sm:aspect-[21/9] min-h-[400px] sm:min-h-[500px] shadow-3xl group">
+                    <div className="bg-slate-100 rounded-[2rem] md:rounded-[5rem] overflow-hidden relative aspect-[4/3] sm:aspect-[21/9] min-h-[400px] sm:min-h-[500px] shadow-3xl group">
                         <div className="absolute inset-0 grayscale group-hover:grayscale-0 transition-all duration-1000">
                             {/* Map Overlay Image or Placeholder Background */}
                             <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=2066')] bg-cover bg-center opacity-40"></div>
                         </div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent flex items-center justify-center p-6 sm:p-12 md:p-20">
-                            <div className="bg-white/95 rounded-[2.5rem] sm:rounded-[3rem] p-8 sm:p-12 max-w-2xl text-center border border-slate-200 shadow-2xl backdrop-blur-2xl hover:scale-105 transition-transform duration-700">
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent flex items-center justify-center p-4 sm:p-12 md:p-20">
+                            <div className="bg-white/95 w-full rounded-[2rem] sm:rounded-[3rem] p-6 sm:p-12 max-w-2xl text-center border border-slate-200 shadow-2xl backdrop-blur-2xl hover:scale-105 transition-transform duration-700">
                                 <h4 className="text-2xl sm:text-3xl font-black text-slate-950 mb-3 sm:mb-4 tracking-tighter leading-tight">LOCAL HUB LOGISTICS</h4>
                                 <p className="text-slate-600 font-medium mb-8 sm:mb-10 leading-relaxed text-sm sm:text-base">
                                     Located strategically on the Akole-Sangamner highway for rapid distribution & logistics. Visit our showroom for physical inspection.
