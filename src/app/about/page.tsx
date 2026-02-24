@@ -16,10 +16,10 @@ export default function AboutPage() {
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-slate-400 mb-10 font-black text-[10px] uppercase tracking-[0.3em]">
                         Establishment 1995
                     </div>
-                    <h1 className="text-6xl md:text-8xl font-black text-white mb-10 tracking-tighter leading-none">
+                    <h1 className="text-5xl sm:text-6xl md:text-8xl font-black text-white mb-8 sm:mb-10 tracking-tighter leading-[1.1] md:leading-none break-words">
                         FOUNDED ON <br /><span className="text-gradient">EXCELLENCE.</span>
                     </h1>
-                    <p className="text-slate-400 text-xl md:text-2xl font-medium max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-slate-400 text-lg sm:text-xl md:text-2xl font-medium max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
                         Supplying the backbone of local construction for over two decades. We are the preferred partner for contractors, painters, and artisans.
                     </p>
                 </div>
@@ -101,10 +101,10 @@ export default function AboutPage() {
 
                         <div>
                             <span className="text-[10px] font-black uppercase tracking-[0.5em] text-orange-600 mb-6 block">Our Legacy Story</span>
-                            <h2 className="text-5xl md:text-7xl font-black text-slate-950 mb-10 tracking-tighter leading-[0.9]">
+                            <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-slate-950 mb-8 sm:mb-10 tracking-tighter leading-[1.1] md:leading-[0.9] break-words">
                                 MORE THAN A <br /><span className="text-slate-400">SUPPLIER.</span>
                             </h2>
-                            <div className="space-y-8 text-xl text-slate-600 font-medium leading-relaxed mb-12">
+                            <div className="space-y-6 sm:space-y-8 text-lg sm:text-xl text-slate-600 font-medium leading-relaxed mb-12">
                                 <p>
                                     Shreeraj Trading Company began with a singular mission: to eliminate the friction in high-end construction by providing immediate access to premium materials.
                                 </p>
@@ -133,20 +133,20 @@ export default function AboutPage() {
             </section>
 
             {/* Powerful Call to Action */}
-            <section className="py-40">
+            <section className="py-24 sm:py-32 md:py-40">
                 <div className="standard-container">
-                    <div className="relative rounded-[5rem] overflow-hidden p-20 md:p-32 text-center bg-slate-950">
+                    <div className="relative rounded-[3rem] sm:rounded-[5rem] overflow-hidden p-8 sm:p-16 md:p-32 text-center bg-slate-950">
                         <div className="absolute inset-0 z-0 scale-125 opacity-20 bg-[url('https://images.unsplash.com/photo-1513467535987-fd81bc206228?q=80&w=1932')] bg-cover"></div>
                         <div className="absolute inset-0 bg-gradient-to-tr from-slate-950 via-slate-900/80 to-transparent z-10"></div>
 
                         <div className="relative z-20 max-w-4xl mx-auto">
-                            <h2 className="text-5xl md:text-8xl font-black text-white mb-10 tracking-tighter leading-none">
+                            <h2 className="text-4xl sm:text-5xl md:text-8xl font-black text-white mb-8 sm:mb-10 tracking-tighter leading-[1.1] md:leading-none break-words">
                                 JOIN THE <span className="text-orange-500 underline decoration-white/10 underline-offset-8">COMMUNITY.</span>
                             </h2>
-                            <p className="text-slate-400 text-xl md:text-2xl mb-16 font-medium leading-relaxed">
+                            <p className="text-slate-400 text-lg sm:text-xl md:text-2xl mb-12 sm:mb-16 font-medium leading-relaxed px-4 sm:px-0">
                                 Whether you're a first-time homeowner or a seasoned civil engineer, we have the tools for your success.
                             </p>
-                            <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
+                            <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center items-center px-4 sm:px-0">
                                 <Link
                                     href="/products"
                                     className="w-full sm:w-auto px-12 py-7 rounded-3xl bg-white text-slate-950 font-black text-sm uppercase tracking-[0.2em] hover:scale-105 active:scale-95 transition-all shadow-3xl flex items-center justify-center gap-4"

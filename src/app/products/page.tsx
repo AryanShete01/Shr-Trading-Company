@@ -63,7 +63,7 @@ export default async function ProductsPage({
 
                     <div className="flex flex-col lg:flex-row justify-between items-end gap-12">
                         <div className="max-w-2xl text-center lg:text-left">
-                            <h1 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tighter leading-none">
+                            <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white mb-6 tracking-tighter leading-none break-words">
                                 INDUSTRIAL <br /><span className="text-gradient">CATALOGUE.</span>
                             </h1>
                             <p className="text-slate-400 text-lg md:text-xl font-medium leading-relaxed">

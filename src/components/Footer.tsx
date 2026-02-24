@@ -46,7 +46,7 @@ export default function Footer() {
                                 { name: "Plumbing Materials", href: "/products?cat=plumbing" },
                             ].map((link) => (
                                 <li key={link.name}>
-                                    <Link href={link.href} className="hover:text-orange-500 flex items-center gap-2 transition-colors group">
+                                    <Link href={link.href} className="hover:text-orange-500 flex items-center gap-2 transition-colors group py-1.5">
                                         {link.name}
                                         <ArrowUpRight size={14} className="opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all" />
                                     </Link>
@@ -67,7 +67,7 @@ export default function Footer() {
                                 { name: "Admin Dashboard", href: "/admin/login" },
                             ].map((link) => (
                                 <li key={link.name}>
-                                    <Link href={link.href} className="hover:text-orange-500 transition-colors">{link.name}</Link>
+                                    <Link href={link.href} className="hover:text-orange-500 transition-colors block py-1.5">{link.name}</Link>
                                 </li>
                             ))}
                         </ul>
@@ -100,7 +100,7 @@ export default function Footer() {
                                 <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center shrink-0 border border-slate-800 group-hover:bg-orange-600 group-hover:border-orange-600 transition-colors">
                                     <Mail className="text-orange-500 group-hover:text-white" size={18} />
                                 </div>
-                                <a href="mailto:shreeraj.trading@gmail.com" className="text-slate-400 hover:text-white transition-colors self-center">shreeraj.trading@gmail.com</a>
+                                <a href="mailto:shreeraj.trading@gmail.com" className="text-slate-400 hover:text-white transition-colors self-center break-all md:break-normal py-2">shreeraj.trading@gmail.com</a>
                             </li>
                         </ul>
                     </div>

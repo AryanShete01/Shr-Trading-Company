@@ -12,6 +12,15 @@ export const metadata: Metadata = {
   description: "Quality hardware, paints, electrical, and plumbing materials since 1995. Your one-stop shop for all building needs.",
 };
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1, // Prevents zoom on input focus for iOS
+  userScalable: false,
+  themeColor: '#ffffff',
+  viewportFit: 'cover', // Safe area support for notched devices
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{

@@ -95,26 +95,26 @@ export default function Home() {
               <span className="text-[10px] font-black tracking-[0.3em] uppercase">Trusted Since 1995</span>
             </div>
 
-            <h1 className="text-6xl md:text-8xl font-black text-white mb-8 leading-[1] tracking-tighter animate-in">
+            <h1 className="text-5xl sm:text-6xl md:text-8xl font-black text-white mb-8 leading-[1.1] md:leading-[1] tracking-tighter animate-in break-words">
               BUILDING <br />
               <span className="text-gradient">EXCELLENCE.</span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-slate-400 mb-12 leading-relaxed max-w-2xl font-medium animate-in [animation-delay:200ms]">
+            <p className="text-lg sm:text-xl md:text-2xl text-slate-400 mb-12 leading-relaxed max-w-2xl font-medium animate-in [animation-delay:200ms]">
               Your premier gateway to industrial-grade hardware, professional paints, and innovative building solutions.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-6 animate-in [animation-delay:400ms]">
+            <div className="flex flex-col sm:flex-row gap-6 animate-in [animation-delay:400ms] w-full sm:w-auto">
               <Link
                 href="/products"
-                className="group px-10 py-6 rounded-3xl bg-orange-600 text-white font-black text-sm uppercase tracking-widest hover:bg-orange-700 transition-all hover:scale-[1.02] active:scale-95 shadow-2xl shadow-orange-600/20 flex items-center justify-center gap-3"
+                className="group w-full sm:w-auto px-8 sm:px-10 py-5 sm:py-6 rounded-3xl bg-orange-600 text-white font-black text-xs sm:text-sm uppercase tracking-widest hover:bg-orange-700 transition-all hover:scale-[1.02] active:scale-95 shadow-2xl shadow-orange-600/20 flex items-center justify-center gap-3 text-center"
               >
                 Browse Inventory <ChevronRight className="group-hover:translate-x-1 transition-transform" />
               </Link>
 
               <Link
                 href="/contact"
-                className="px-10 py-6 rounded-3xl bg-white/5 border border-white/10 text-white font-black text-sm uppercase tracking-widest backdrop-blur-md hover:bg-white/10 transition-all text-center flex items-center justify-center gap-3"
+                className="w-full sm:w-auto px-8 sm:px-10 py-5 sm:py-6 rounded-3xl bg-white/5 border border-white/10 text-white font-black text-xs sm:text-sm uppercase tracking-widest backdrop-blur-md hover:bg-white/10 transition-all flex items-center justify-center gap-3 text-center"
               >
                 Contact Shop <MapPin size={18} className="text-slate-400" />
               </Link>
@@ -130,13 +130,13 @@ export default function Home() {
             {trustBadges.map((badge, i) => (
               <div
                 key={badge.title}
-                className="glass rounded-[3rem] p-10 border border-white/10 shadow-2xl hover-lift group animate-in"
+                className="glass rounded-[2rem] sm:rounded-[3rem] p-8 sm:p-10 border border-white/10 shadow-2xl hover-lift group animate-in"
                 style={{ animationDelay: `${i * 150}ms` }}
               >
-                <div className="w-16 h-16 rounded-2xl bg-orange-600/10 flex items-center justify-center text-orange-600 mb-8 group-hover:scale-110 transition-transform duration-500">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-orange-600/10 flex items-center justify-center text-orange-600 mb-6 sm:mb-8 group-hover:scale-110 transition-transform duration-500">
                   {badge.icon}
                 </div>
-                <h3 className="text-2xl font-black text-slate-900 mb-4 tracking-tight">{badge.title}</h3>
+                <h3 className="text-xl sm:text-2xl font-black text-slate-900 mb-3 sm:mb-4 tracking-tight">{badge.title}</h3>
                 <p className="text-slate-500 font-medium leading-relaxed">
                   {badge.desc}
                 </p>
@@ -152,16 +152,16 @@ export default function Home() {
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 mb-20">
             <div className="max-w-3xl">
               <span className="text-[10px] font-black uppercase tracking-[0.5em] text-orange-600 mb-4 block">Product Ecosystem</span>
-              <h2 className="text-5xl md:text-7xl font-black text-slate-950 mb-8 tracking-tighter leading-none">
+              <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-slate-950 mb-6 sm:mb-8 tracking-tighter leading-[1.1] md:leading-none">
                 CURATED FOR <br /><span className="text-slate-400">PROFESSIONALS.</span>
               </h2>
-              <p className="text-xl text-slate-500 font-medium leading-relaxed">
+              <p className="text-lg sm:text-xl text-slate-500 font-medium leading-relaxed">
                 We bridge the gap between world-class manufacturers and local craftsmanship. Explore our specialized divisions.
               </p>
             </div>
             <Link
               href="/products"
-              className="group px-8 py-5 rounded-2xl bg-white border border-slate-200 text-slate-950 font-black text-xs uppercase tracking-widest hover:bg-slate-950 hover:text-white transition-all duration-500 shadow-sm flex items-center gap-3"
+              className="group w-full sm:w-auto justify-center sm:justify-start px-8 py-5 rounded-2xl bg-white border border-slate-200 text-slate-950 font-black text-xs uppercase tracking-widest hover:bg-slate-950 hover:text-white transition-all duration-500 shadow-sm flex items-center gap-3"
             >
               Full Catalogue <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
             </Link>
@@ -172,15 +172,15 @@ export default function Home() {
               <Link
                 key={cat.name}
                 href={cat.href}
-                className="group relative bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-orange-200 transition-all duration-700 overflow-hidden flex flex-col h-full"
+                className="group relative bg-white p-8 sm:p-10 rounded-[2rem] sm:rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-orange-200 transition-all duration-700 overflow-hidden flex flex-col h-full"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${cat.color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700`}></div>
 
-                <div className={`${cat.lightColor} w-20 h-20 rounded-3xl flex items-center justify-center mb-10 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-500 shadow-lg shadow-black/5`}>
+                <div className={`${cat.lightColor} w-16 h-16 sm:w-20 sm:h-20 rounded-2xl sm:rounded-3xl flex items-center justify-center mb-8 sm:mb-10 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-500 shadow-lg shadow-black/5`}>
                   {cat.icon}
                 </div>
 
-                <h4 className="text-3xl font-black text-slate-950 mb-4 tracking-tighter leading-tight">{cat.name}</h4>
+                <h4 className="text-2xl sm:text-3xl font-black text-slate-950 mb-3 sm:mb-4 tracking-tighter leading-tight">{cat.name}</h4>
                 <p className="text-slate-500 font-medium leading-relaxed mb-10 h-12">
                   {cat.description}
                 </p>
@@ -198,10 +198,10 @@ export default function Home() {
       </section>
 
       {/* Featured CTA Section */}
-      <section className="py-40 relative overflow-hidden">
+      <section className="py-24 sm:py-32 md:py-40 relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-slate-100/50 -rotate-3 z-0"></div>
         <div className="standard-container relative z-10">
-          <div className="relative rounded-[5rem] overflow-hidden p-16 md:p-32 text-center bg-slate-950 shadow-3xl">
+          <div className="relative rounded-[3rem] sm:rounded-[5rem] overflow-hidden p-8 sm:p-16 md:p-32 text-center bg-slate-950 shadow-3xl">
             <div className="absolute inset-0 opacity-40">
               <img
                 src="https://images.unsplash.com/photo-1513467535987-fd81bc206228?q=80&w=1932"
@@ -212,32 +212,32 @@ export default function Home() {
             </div>
 
             <div className="relative z-20 max-w-4xl mx-auto flex flex-col items-center">
-              <div className="w-20 h-20 bg-white/10 backdrop-blur-xl p-5 rounded-[2rem] mb-12 text-white shadow-2xl animate-bounce">
-                <MessageCircle size={40} className="fill-orange-500 text-orange-500" />
+              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/10 backdrop-blur-xl p-4 sm:p-5 rounded-2xl sm:rounded-[2rem] mb-8 sm:mb-12 text-white shadow-2xl animate-bounce">
+                <MessageCircle size={32} className="fill-orange-500 text-orange-500 sm:w-10 sm:h-10 w-8 h-8" />
               </div>
 
-              <h2 className="text-5xl md:text-8xl font-black text-white mb-10 tracking-tighter leading-none">
+              <h2 className="text-4xl sm:text-5xl md:text-8xl font-black text-white mb-6 sm:mb-10 tracking-tighter leading-none">
                 BUILD YOUR <br /><span className="text-orange-500">LEGACY.</span>
               </h2>
 
-              <p className="text-slate-300 text-xl md:text-2xl mb-16 font-medium leading-relaxed max-w-2xl">
+              <p className="text-slate-300 text-lg sm:text-xl md:text-2xl mb-10 sm:mb-16 font-medium leading-relaxed max-w-2xl px-4">
                 Ready to elevate your project? Get instant quotes and expert advice via WhatsApp.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-8 w-full sm:w-auto">
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 w-full sm:w-auto px-4 sm:px-0">
                 <a
                   href="https://wa.me/918306063148"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-12 py-7 rounded-3xl bg-white text-slate-950 font-black text-sm uppercase tracking-[0.2em] hover:scale-105 active:scale-95 transition-all shadow-2xl flex items-center justify-center gap-4 group"
+                  className="w-full sm:w-auto px-8 sm:px-12 py-5 sm:py-7 rounded-2xl sm:rounded-3xl bg-white text-slate-950 font-black text-xs sm:text-sm uppercase tracking-[0.2em] hover:scale-105 active:scale-95 transition-all shadow-2xl flex items-center justify-center gap-3 sm:gap-4 group"
                 >
-                  Message Desk <ArrowRight className="group-hover:translate-x-2 transition-transform" />
+                  Message Desk <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
                 </a>
                 <Link
                   href="/contact"
-                  className="px-12 py-7 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 text-white font-black text-sm uppercase tracking-[0.2em] hover:bg-white/20 transition-all text-center flex items-center justify-center gap-4"
+                  className="w-full sm:w-auto px-8 sm:px-12 py-5 sm:py-7 rounded-2xl sm:rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 text-white font-black text-xs sm:text-sm uppercase tracking-[0.2em] hover:bg-white/20 transition-all text-center flex items-center justify-center gap-3 sm:gap-4"
                 >
-                  Our Location <MapPin size={20} className="text-orange-500" />
+                  Our Location <MapPin size={18} className="text-orange-500" />
                 </Link>
               </div>
             </div>

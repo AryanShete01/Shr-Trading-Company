@@ -66,10 +66,10 @@ export default function ContactPage() {
                             <ChevronRight size={12} />
                             <span className="text-orange-500">Contact Protocol</span>
                         </nav>
-                        <h1 className="text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter leading-none">
+                        <h1 className="text-5xl sm:text-6xl md:text-8xl font-black text-white mb-6 sm:mb-8 tracking-tighter leading-[1.1] md:leading-none break-words">
                             LET'S <span className="text-gradient">COMMUNICATE.</span>
                         </h1>
-                        <p className="text-slate-400 text-xl md:text-2xl font-medium max-w-2xl leading-relaxed">
+                        <p className="text-slate-400 text-lg sm:text-xl md:text-2xl font-medium max-w-2xl leading-relaxed px-4 sm:px-0">
                             Have technical specifications to discuss? Our engineering and sales team is standing by to assist with your project requirements.
                         </p>
                     </div>
@@ -113,36 +113,36 @@ export default function ContactPage() {
                         </div>
 
                         {/* Interactive Form Side */}
-                        <div className="lg:col-span-2 bg-white rounded-[4rem] shadow-2xl shadow-slate-950/5 border border-slate-100 overflow-hidden">
+                        <div className="lg:col-span-2 bg-white rounded-[2.5rem] sm:rounded-[4rem] shadow-2xl shadow-slate-950/5 border border-slate-100 overflow-hidden">
                             <div className="grid grid-cols-1 md:grid-cols-12 h-full">
-                                <div className="md:col-span-12 p-12 md:p-20">
-                                    <div className="mb-16">
-                                        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-orange-600 mb-4 block">Official Inquiry Form</span>
-                                        <h2 className="text-4xl md:text-5xl font-black text-slate-950 mb-6 tracking-tighter">SPECIFICATION DESK</h2>
-                                        <p className="text-slate-500 text-lg font-medium max-w-xl">
+                                <div className="md:col-span-12 p-8 sm:p-12 md:p-20">
+                                    <div className="mb-12 sm:mb-16">
+                                        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-orange-600 mb-4 block mt-4 sm:mt-0">Official Inquiry Form</span>
+                                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-950 mb-4 sm:mb-6 tracking-tighter leading-tight break-words">SPECIFICATION DESK</h2>
+                                        <p className="text-slate-500 text-base sm:text-lg font-medium max-w-xl pr-4 sm:pr-0">
                                             Provide your project details below. Our technical desk will prepare a comprehensive quote including availability status.
                                         </p>
                                     </div>
 
-                                    <form onSubmit={handleSubmit} className="space-y-12">
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                                            <div className="space-y-4">
+                                    <form onSubmit={handleSubmit} className="space-y-8 sm:space-y-12">
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+                                            <div className="space-y-3 sm:space-y-4">
                                                 <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Full Signature / Name</label>
                                                 <input
                                                     name="name"
                                                     type="text"
                                                     required
-                                                    className="w-full px-8 py-6 rounded-3xl bg-slate-50 border border-transparent focus:bg-white focus:border-slate-200 outline-none transition-all font-black text-sm text-slate-900 placeholder:text-slate-300"
+                                                    className="w-full px-6 sm:px-8 py-5 sm:py-6 rounded-2xl sm:rounded-3xl bg-slate-50 border border-transparent focus:bg-white focus:border-slate-200 outline-none transition-all font-black text-sm text-slate-900 placeholder:text-slate-300"
                                                     placeholder="Johnathan Doe"
                                                 />
                                             </div>
-                                            <div className="space-y-4">
+                                            <div className="space-y-3 sm:space-y-4">
                                                 <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Contact Terminal / Phone</label>
                                                 <input
                                                     name="phone"
                                                     type="text"
                                                     required
-                                                    className="w-full px-8 py-6 rounded-3xl bg-slate-50 border border-transparent focus:bg-white focus:border-slate-200 outline-none transition-all font-black text-sm text-slate-900 placeholder:text-slate-300"
+                                                    className="w-full px-6 sm:px-8 py-5 sm:py-6 rounded-2xl sm:rounded-3xl bg-slate-50 border border-transparent focus:bg-white focus:border-slate-200 outline-none transition-all font-black text-sm text-slate-900 placeholder:text-slate-300"
                                                     placeholder="+91 00000 00000"
                                                 />
                                             </div>
@@ -197,22 +197,22 @@ export default function ContactPage() {
             {/* Industrial Map Section */}
             <section className="mb-40">
                 <div className="standard-container">
-                    <div className="bg-slate-100 rounded-[5rem] overflow-hidden relative aspect-[21/9] min-h-[500px] shadow-3xl group">
+                    <div className="bg-slate-100 rounded-[3rem] md:rounded-[5rem] overflow-hidden relative aspect-[4/3] sm:aspect-[21/9] min-h-[400px] sm:min-h-[500px] shadow-3xl group">
                         <div className="absolute inset-0 grayscale group-hover:grayscale-0 transition-all duration-1000">
                             {/* Map Overlay Image or Placeholder Background */}
                             <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=2066')] bg-cover bg-center opacity-40"></div>
                         </div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end justify-center p-20">
-                            <div className="glass rounded-[3rem] p-12 max-w-2xl text-center border-white/20 shadow-2xl backdrop-blur-2xl">
-                                <h4 className="text-3xl font-black text-white mb-4 tracking-tighter">LOCAL HUB LOGISTICS</h4>
-                                <p className="text-slate-300 font-medium mb-10 leading-relaxed">
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 sm:from-slate-950/80 via-slate-900/40 sm:via-transparent to-transparent flex items-end justify-center p-6 sm:p-12 md:p-20">
+                            <div className="glass rounded-[2.5rem] sm:rounded-[3rem] p-8 sm:p-12 max-w-2xl text-center border-white/20 shadow-2xl backdrop-blur-2xl">
+                                <h4 className="text-2xl sm:text-3xl font-black text-white mb-3 sm:mb-4 tracking-tighter leading-tight">LOCAL HUB LOGISTICS</h4>
+                                <p className="text-slate-300 font-medium mb-8 sm:mb-10 leading-relaxed text-sm sm:text-base">
                                     Located strategically on the Akole-Sangamner highway for rapid distribution & logistics. Visit our showroom for physical inspection.
                                 </p>
                                 <a
                                     href="https://maps.app.goo.gl/KcAirQutM5FjJBUGA"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-3 bg-white text-slate-950 px-12 py-5 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] hover:bg-orange-600 hover:text-white transition-all shadow-xl"
+                                    className="inline-flex w-full sm:w-auto items-center justify-center gap-3 bg-white text-slate-950 px-8 sm:px-12 py-5 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] hover:bg-orange-600 hover:text-white transition-all shadow-xl"
                                 >
                                     NAVIGATE TO STORE <MapPin size={16} />
                                 </a>

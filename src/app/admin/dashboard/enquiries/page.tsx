@@ -22,7 +22,7 @@ export default async function EnquiriesPage() {
     });
 
     return (
-        <div className="p-10 pb-20">
+        <div className="p-4 sm:p-8 md:p-10 pb-20">
             {/* Header */}
             <div className="mb-12">
                 <h1 className="text-4xl font-black text-slate-950 tracking-tight">Customer Enquiries</h1>
@@ -36,7 +36,7 @@ export default async function EnquiriesPage() {
                         <div key={enquiry.id} className="bg-white rounded-[32px] border border-slate-100 shadow-sm overflow-hidden group hover:border-orange-200 transition-all duration-300">
                             <div className="flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-slate-50">
                                 {/* Left Content: User Info */}
-                                <div className="p-8 md:w-80 shrink-0 bg-slate-50/30">
+                                <div className="p-6 sm:p-8 md:w-80 shrink-0 bg-slate-50/30">
                                     <div className="flex items-center gap-4 mb-6">
                                         <div className="w-12 h-12 rounded-2xl bg-orange-100 text-orange-700 flex items-center justify-center font-black">
                                             {enquiry.name.charAt(0).toUpperCase()}
@@ -69,7 +69,7 @@ export default async function EnquiriesPage() {
                                 </div>
 
                                 {/* Right Content: Message & Action */}
-                                <div className="p-8 flex-1 flex flex-col justify-between">
+                                <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between">
                                     <div>
                                         {enquiry.product && (
                                             <div className="mb-4 flex items-center gap-2 bg-slate-50 px-4 py-2 rounded-xl border border-slate-100 w-fit">
@@ -85,7 +85,7 @@ export default async function EnquiriesPage() {
                                         </p>
                                     </div>
 
-                                    <div className="mt-8 flex items-center justify-between">
+                                    <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-0">
                                         <a
                                             href={`https://wa.me/${enquiry.phone.replace(/[^0-9]/g, '')}`}
                                             target="_blank"

@@ -32,7 +32,7 @@ export default async function AdminDashboard() {
     ];
 
     return (
-        <div className="p-10 pb-20">
+        <div className="p-4 sm:p-8 md:p-10 pb-20">
             {/* Header */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
                 <div>
@@ -63,9 +63,9 @@ export default async function AdminDashboard() {
             </div>
 
             {/* Recent Inventory Section */}
-            <div className="bg-white rounded-[40px] border border-slate-100 shadow-sm overflow-hidden">
-                <div className="p-8 border-b border-slate-50 flex justify-between items-center">
-                    <h2 className="text-2xl font-black text-slate-950 tracking-tight flex items-center gap-3">
+            <div className="bg-white rounded-[2rem] sm:rounded-[40px] border border-slate-100 shadow-sm overflow-hidden">
+                <div className="p-6 sm:p-8 border-b border-slate-50 flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-4">
+                    <h2 className="text-xl sm:text-2xl font-black text-slate-950 tracking-tight flex items-center gap-3">
                         Recent Inventory <span className="text-sm font-bold bg-slate-50 text-slate-400 px-3 py-1 rounded-full">{recentProducts.length}</span>
                     </h2>
                     <div className="flex items-center gap-4">
