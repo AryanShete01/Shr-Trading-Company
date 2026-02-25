@@ -158,3 +158,95 @@ h4,
 .animate-in {
   animation: fadeIn 0.6s var(--ease-spring) forwards;
 }
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(3deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@keyframes gradient-x {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-blob {
+  animation: blob 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.animate-blob-slow {
+  animation: blob 30s infinite alternate-reverse cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.animate-float {
+  animation: float 12s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-float-slow {
+  animation: float 18s ease-in-out infinite reverse;
+  will-change: transform;
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 15s ease infinite;
+}
+
+.animate-gradient-slow {
+  background-size: 200% 200%;
+  animation: gradient-x 25s ease infinite reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .animate-blob,
+  .animate-blob-slow,
+  .animate-float,
+  .animate-float-slow,
+  .animate-gradient-x,
+  .animate-gradient-slow,
+  .animate-in,
+  .animate-pulse,
+  .motion-safe\:animate-\[zoom_60s_infinite_alternate\] {
+    animation: none !important;
+    transform: none !important;
+  }
+}

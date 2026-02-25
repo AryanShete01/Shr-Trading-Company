@@ -51,8 +51,8 @@ export default async function ProductsPage({
 
             {/* Premium Header */}
             <section className="pt-40 pb-20 bg-slate-950 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-1/3 h-full bg-orange-600/10 blur-[120px] -translate-y-1/2"></div>
-                <div className="absolute bottom-0 left-0 w-1/4 h-1/2 bg-blue-600/5 blur-[100px]"></div>
+                <div className="absolute top-0 right-0 w-1/3 h-full bg-orange-600/10 blur-[120px] -translate-y-1/2 animate-blob"></div>
+                <div className="absolute bottom-0 left-0 w-1/4 h-1/2 bg-blue-600/5 blur-[100px] animate-blob-slow"></div>
 
                 <div className="standard-container relative z-10">
                     <nav className="flex items-center gap-2 text-slate-500 text-[10px] font-black uppercase tracking-[0.3em] mb-6">
@@ -116,7 +116,9 @@ export default async function ProductsPage({
 
                             <div className="p-10 rounded-[3rem] bg-orange-600 text-white shadow-3xl shadow-orange-600/20 relative overflow-hidden group">
                                 <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-125 transition-transform duration-700">
-                                    <Box size={100} />
+                                    <div className="animate-float">
+                                        <Box size={100} />
+                                    </div>
                                 </div>
                                 <h4 className="text-2xl font-black mb-4 tracking-tight leading-tight">Bulk Order Specialists</h4>
                                 <p className="text-sm font-medium text-orange-50 mb-10 opacity-90 leading-relaxed">

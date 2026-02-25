@@ -10,7 +10,7 @@ export default function AboutPage() {
 
             {/* Immersive Header */}
             <section className="bg-slate-950 pt-48 pb-40 overflow-hidden relative">
-                <div className="absolute top-0 left-1/4 w-[50%] h-full bg-orange-600/10 rounded-full blur-[150px] -translate-y-1/2"></div>
+                <div className="absolute top-0 left-1/4 w-[50%] h-full bg-orange-600/10 rounded-full blur-[150px] -translate-y-1/2 animate-blob"></div>
 
                 <div className="standard-container relative z-10 text-center">
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-slate-400 mb-10 font-black text-[10px] uppercase tracking-[0.3em]">

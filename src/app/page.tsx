@@ -79,8 +79,8 @@ export default function Home() {
         {/* Advanced Background Layers */}
         <div className="absolute inset-0 z-10 bg-gradient-to-b from-slate-950/40 via-slate-950 to-slate-950"></div>
         <div className="absolute inset-0 z-0 overflow-hidden">
-          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-orange-600/20 rounded-full blur-[120px] animate-pulse"></div>
-          <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-600/10 rounded-full blur-[150px]"></div>
+          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-orange-600/20 rounded-full blur-[120px] animate-blob"></div>
+          <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-600/10 rounded-full blur-[150px] animate-blob-slow"></div>
           <img
             src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070"
             alt="Hardware Background"
@@ -200,7 +200,7 @@ export default function Home() {
 
       {/* Featured CTA Section */}
       <section className="py-24 sm:py-32 md:py-40 relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-slate-100/50 -rotate-3 z-0"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-slate-100/50 via-slate-50/50 to-orange-50/30 animate-gradient-slow -rotate-3 z-0"></div>
         <div className="standard-container relative z-10">
           <div className="relative rounded-[3rem] sm:rounded-[5rem] overflow-hidden p-8 sm:p-16 md:p-32 text-center bg-slate-950 shadow-3xl">
             <div className="absolute inset-0 opacity-40">
@@ -213,7 +213,7 @@ export default function Home() {
             </div>
 
             <div className="relative z-20 max-w-4xl mx-auto flex flex-col items-center">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/10 backdrop-blur-xl p-4 sm:p-5 rounded-2xl sm:rounded-[2rem] mb-8 sm:mb-12 text-white shadow-2xl animate-bounce">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/10 backdrop-blur-xl p-4 sm:p-5 rounded-2xl sm:rounded-[2rem] mb-8 sm:mb-12 text-white shadow-2xl animate-float">
                 <MessageCircle size={32} className="fill-orange-500 text-orange-500 sm:w-10 sm:h-10 w-8 h-8" />
               </div>
 

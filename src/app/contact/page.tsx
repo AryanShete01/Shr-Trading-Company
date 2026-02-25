@@ -58,7 +58,7 @@ export default function ContactPage() {
 
             {/* Minimalist Header */}
             <section className="bg-slate-950 pt-48 pb-32 overflow-hidden relative">
-                <div className="absolute top-0 right-1/4 w-[60%] h-full bg-orange-600/10 rounded-full blur-[150px] -translate-y-1/2"></div>
+                <div className="absolute top-0 right-1/4 w-[60%] h-full bg-orange-600/10 rounded-full blur-[150px] -translate-y-1/2 animate-blob"></div>
                 <div className="standard-container relative z-10">
                     <div className="max-w-4xl">
                         <nav className="flex items-center gap-2 text-slate-500 text-[10px] font-black uppercase tracking-[0.3em] mb-10">
@@ -100,7 +100,9 @@ export default function ContactPage() {
 
                             <div className="bg-slate-950 p-12 rounded-[3.5rem] text-white overflow-hidden relative group">
                                 <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-125 transition-transform duration-700">
-                                    <Globe size={120} />
+                                    <div className="animate-float-slow">
+                                        <Globe size={120} />
+                                    </div>
                                 </div>
                                 <h4 className="text-2xl font-black mb-6 tracking-tight relative z-10">Global Sourcing</h4>
                                 <p className="text-slate-400 font-medium leading-relaxed relative z-10 mb-8 text-sm">
