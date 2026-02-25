@@ -16,6 +16,9 @@ import {
 import Link from "next/link";
 import { formatPrice } from "@/lib/utils";
 
+export const revalidate = 60; // Revalidate every 60 seconds
+export const dynamicParams = true; // Allow new products to be generated on demand
+
 export default async function ProductDetailsPage({
     params,
 }: {

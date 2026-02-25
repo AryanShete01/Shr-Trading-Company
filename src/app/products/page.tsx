@@ -7,8 +7,7 @@ import { Search, Filter, Box, ArrowRight, ChevronRight, Paintbrush, Hammer, Zap,
 import { FadeIn } from "@/components/animations/FadeIn";
 import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerContainer";
 
-export const dynamic = "force-dynamic";
-
+export const revalidate = 60; // Revalidate every 60 seconds
 export default async function ProductsPage({
     searchParams: searchParamsPromise,
 }: {
@@ -30,8 +29,8 @@ export default async function ProductsPage({
                 cat ? { category: { equals: categoryMap[cat] || cat } } : {},
                 q ? {
                     OR: [
-                        { name: { contains: q } },
-                        { description: { contains: q } }
+                        { name: { contains: q, mode: "insensitive" } },
+                        { description: { contains: q, mode: "insensitive" } }
                     ]
                 } : {}
             ]
