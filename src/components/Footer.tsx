@@ -3,20 +3,20 @@ import { ShoppingBag, Facebook, Twitter, Instagram, Mail, Phone, MapPin, ArrowUp
 
 export default function Footer() {
     return (
-        <footer className="bg-slate-950 text-slate-400 pt-24 pb-12 overflow-hidden relative">
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-600/5 rounded-full blur-[120px] -translate-y-1/2"></div>
+        <footer className="bg-[#020617] text-slate-400 pt-24 pb-12 overflow-hidden relative border-t border-white/5">
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px] -translate-y-1/2"></div>
 
             <div className="standard-container relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
                     {/* Brand & Mission */}
                     <div className="space-y-8">
                         <Link href="/" className="flex items-center gap-3">
-                            <div className="bg-orange-600 p-2.5 rounded-xl shadow-lg shadow-orange-600/20">
+                            <div className="bg-primary p-2.5 rounded-xl shadow-lg shadow-primary/20">
                                 <ShoppingBag className="text-white w-6 h-6" />
                             </div>
                             <div className="flex flex-col">
                                 <span className="text-2xl font-black tracking-tighter leading-none text-white">SHREERAJ</span>
-                                <span className="text-[10px] font-black tracking-[0.2em] text-orange-500 uppercase leading-none mt-1.5">Trading Co.</span>
+                                <span className="text-[10px] font-black tracking-[0.2em] text-primary uppercase leading-none mt-1.5">Trading Co.</span>
                             </div>
                         </Link>
                         <p className="text-slate-400 font-medium leading-relaxed max-w-xs">
@@ -27,7 +27,7 @@ export default function Footer() {
                                 <Link
                                     key={i}
                                     href="#"
-                                    className="w-10 h-10 rounded-full border border-slate-800 flex items-center justify-center hover:bg-orange-600 hover:border-orange-600 hover:text-white transition-all duration-300"
+                                    className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-all duration-300"
                                 >
                                     <Icon size={18} />
                                 </Link>
@@ -46,7 +46,7 @@ export default function Footer() {
                                 { name: "Plumbing Materials", href: "/products?cat=plumbing" },
                             ].map((link) => (
                                 <li key={link.name}>
-                                    <Link href={link.href} className="hover:text-orange-500 flex items-center gap-2 transition-colors group py-1.5">
+                                    <Link href={link.href} className="hover:text-primary flex items-center gap-2 transition-colors group py-1.5">
                                         {link.name}
                                         <ArrowUpRight size={14} className="opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all" />
                                     </Link>
@@ -67,7 +67,7 @@ export default function Footer() {
                                 { name: "Admin Dashboard", href: "/admin/login" },
                             ].map((link) => (
                                 <li key={link.name}>
-                                    <Link href={link.href} className="hover:text-orange-500 transition-colors block py-1.5">{link.name}</Link>
+                                    <Link href={link.href} className="hover:text-primary transition-colors block py-1.5">{link.name}</Link>
                                 </li>
                             ))}
                         </ul>
@@ -78,8 +78,8 @@ export default function Footer() {
                         <h4 className="text-white font-black uppercase text-xs tracking-[0.2em] mb-8">Headquarters</h4>
                         <ul className="space-y-6 font-bold text-sm">
                             <li className="flex gap-4 group">
-                                <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center shrink-0 border border-slate-800 group-hover:bg-orange-600 group-hover:border-orange-600 transition-colors">
-                                    <MapPin className="text-orange-500 group-hover:text-white" size={18} />
+                                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0 border border-white/10 group-hover:bg-primary group-hover:border-primary transition-colors">
+                                    <MapPin className="text-primary group-hover:text-white" size={18} />
                                 </div>
                                 <a
                                     href="https://maps.app.goo.gl/KcAirQutM5FjJBUGA"
@@ -91,14 +91,14 @@ export default function Footer() {
                                 </a>
                             </li>
                             <li className="flex gap-4 group">
-                                <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center shrink-0 border border-slate-800 group-hover:bg-orange-600 group-hover:border-orange-600 transition-colors">
-                                    <Phone className="text-orange-500 group-hover:text-white" size={18} />
+                                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0 border border-white/10 group-hover:bg-primary group-hover:border-primary transition-colors">
+                                    <Phone className="text-primary group-hover:text-white" size={18} />
                                 </div>
                                 <a href="tel:+918306063148" className="text-slate-400 hover:text-white transition-colors self-center">+91 83060 63148</a>
                             </li>
                             <li className="flex gap-4 group">
-                                <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center shrink-0 border border-slate-800 group-hover:bg-orange-600 group-hover:border-orange-600 transition-colors">
-                                    <Mail className="text-orange-500 group-hover:text-white" size={18} />
+                                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0 border border-white/10 group-hover:bg-primary group-hover:border-primary transition-colors">
+                                    <Mail className="text-primary group-hover:text-white" size={18} />
                                 </div>
                                 <a href="mailto:shreeraj.trading@gmail.com" className="text-slate-400 hover:text-white transition-colors self-center break-all md:break-normal py-2">shreeraj.trading@gmail.com</a>
                             </li>
@@ -106,13 +106,13 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="pt-12 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
                     <p className="text-xs font-bold uppercase tracking-widest text-slate-600">
                         © {new Date().getFullYear()} Shreeraj Trading Company. Crafted with Excellence.
                     </p>
                     <div className="flex items-center gap-8">
-                        <Link href="/contact" className="text-xs font-black uppercase tracking-widest text-slate-500 hover:text-orange-500 transition-colors">Privacy Policy</Link>
-                        <Link href="/contact" className="text-xs font-black uppercase tracking-widest text-slate-500 hover:text-orange-500 transition-colors">Terms of Service</Link>
+                        <Link href="/contact" className="text-xs font-black uppercase tracking-widest text-slate-500 hover:text-primary transition-colors">Privacy Policy</Link>
+                        <Link href="/contact" className="text-xs font-black uppercase tracking-widest text-slate-500 hover:text-primary transition-colors">Terms of Service</Link>
                     </div>
                 </div>
             </div>

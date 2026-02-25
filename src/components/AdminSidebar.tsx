@@ -53,9 +53,9 @@ export default function AdminSidebar() {
                 <div className="p-8">
                     <div className="flex items-center justify-between mb-12">
                         <div className="flex items-center gap-3 group">
-                            <div className="w-10 h-10 bg-orange-700 rounded-xl flex items-center justify-center text-white font-black text-xl group-hover:scale-110 transition-transform shadow-lg shadow-orange-700/20">S</div>
+                            <div className="w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center text-white font-black text-xl group-hover:scale-110 transition-transform shadow-lg shadow-red-600/20">S</div>
                             <div className="flex flex-col">
-                                <span className="text-lg font-black tracking-tighter leading-none">ADMIN <span className="text-orange-500">PANEL</span></span>
+                                <span className="text-lg font-black tracking-tighter leading-none">ADMIN <span className="text-red-500">PANEL</span></span>
                                 <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-1">Shreeraj Trading Co.</span>
                             </div>
                         </div>
@@ -77,7 +77,7 @@ export default function AdminSidebar() {
                                     : "text-slate-400 hover:bg-white/5 hover:text-white"
                                     }`}
                             >
-                                <item.icon size={20} className={`${item.active ? "text-orange-500" : "group-hover:text-orange-400 transition-colors"}`} />
+                                <item.icon size={20} className={`${item.active ? "text-red-500" : "group-hover:text-red-400 transition-colors"}`} />
                                 {item.name}
                             </Link>
                         ))}

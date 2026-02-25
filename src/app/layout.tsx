@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
+import { Toaster } from "react-hot-toast";
+import CustomCursor from "@/components/CustomCursor";
+import Preloader from "@/components/animations/Preloader";
+import SeedanceBackground from "@/components/animations/SeedanceBackground";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -28,8 +32,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${outfit.variable} font-sans antialiased text-slate-900 bg-white`}>
+      <body className={`${outfit.variable} font-sans antialiased text-white bg-black`}>
+        <Preloader />
+        <SeedanceBackground />
+        <CustomCursor />
         {children}
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+          toastOptions={{
+            style: {
+              background: '#333',
+              color: '#fff',
+            },
+          }}
+        />
       </body>
     </html>
   );
