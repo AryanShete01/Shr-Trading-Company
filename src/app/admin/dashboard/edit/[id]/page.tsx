@@ -17,6 +17,7 @@ export default function EditProductPage({
     const [loading, setLoading] = useState(true);
     const [submitting, setSubmitting] = useState(false);
     const [preview, setPreview] = useState<string | null>(null);
+    const [compressedFile, setCompressedFile] = useState<File | null>(null);
     const router = useRouter();
 
     useEffect(() => {
@@ -39,9 +40,45 @@ export default function EditProductPage({
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
-                setPreview(reader.result as string);
+                const img = new window.Image();
+                img.onload = () => {
+                    const canvas = document.createElement("canvas");
+                    let width = img.width;
+                    let height = img.height;
+                    const maxDim = 800; // compress dimension
+
+                    if (width > height) {
+                        if (width > maxDim) {
+                            height *= maxDim / width;
+                            width = maxDim;
+                        }
+                    } else {
+                        if (height > maxDim) {
+                            width *= maxDim / height;
+                            height = maxDim;
+                        }
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext("2d");
+                    ctx?.drawImage(img, 0, 0, width, height);
+
+                    canvas.toBlob((blob) => {
+                        if (blob) {
+                            const newFile = new File([blob], file.name.replace(/\.[^/.]+$/, ".webp"), {
+                                type: "image/webp",
+                            });
+                            setCompressedFile(newFile);
+                            setPreview(URL.createObjectURL(blob));
+                        }
+                    }, "image/webp", 0.7);
+                };
+                img.src = reader.result as string;
             };
             reader.readAsDataURL(file);
+        } else {
+            setCompressedFile(null);
         }
     };
 
@@ -89,7 +126,14 @@ export default function EditProductPage({
                 <form
                     action={async (formData) => {
                         setSubmitting(true);
-                        await updateProduct(product.id, formData);
+                        try {
+                            if (compressedFile) {
+                                formData.set("image", compressedFile);
+                            }
+                            await updateProduct(product.id, formData);
+                        } finally {
+                            setSubmitting(false);
+                        }
                     }}
                     className="p-12 md:p-16 space-y-12"
                 >

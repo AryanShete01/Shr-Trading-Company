@@ -8,19 +8,67 @@ import { toast } from "react-hot-toast";
 
 export default function NewProductPage() {
     const [loading, setLoading] = useState(false);
-
     const [preview, setPreview] = useState<string | null>(null);
+    const [compressedFile, setCompressedFile] = useState<File | null>(null);
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
-                setPreview(reader.result as string);
+                const img = new window.Image();
+                img.onload = () => {
+                    const canvas = document.createElement("canvas");
+                    let width = img.width;
+                    let height = img.height;
+                    const maxDim = 800; // compress dimension
+
+                    if (width > height) {
+                        if (width > maxDim) {
+                            height *= maxDim / width;
+                            width = maxDim;
+                        }
+                    } else {
+                        if (height > maxDim) {
+                            width *= maxDim / height;
+                            height = maxDim;
+                        }
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext("2d");
+                    ctx?.drawImage(img, 0, 0, width, height);
+
+                    canvas.toBlob((blob) => {
+                        if (blob) {
+                            const newFile = new File([blob], file.name.replace(/\.[^/.]+$/, ".webp"), {
+                                type: "image/webp",
+                            });
+                            setCompressedFile(newFile);
+                            setPreview(URL.createObjectURL(blob));
+                        }
+                    }, "image/webp", 0.7);
+                };
+                img.src = reader.result as string;
             };
             reader.readAsDataURL(file);
         } else {
             setPreview(null);
+            setCompressedFile(null);
+        }
+    };
+
+    const handleSubmit = async (formData: FormData) => {
+        setLoading(true);
+        try {
+            if (compressedFile) {
+                formData.set("image", compressedFile);
+            }
+            await createProduct(formData);
+        } finally {
+            // Error handling or fallback if createProduct doesn't redirect
+            setLoading(false);
         }
     };
 
@@ -46,7 +94,7 @@ export default function NewProductPage() {
                     </div>
                 </div>
 
-                <form action={createProduct} onSubmit={() => setLoading(true)} className="p-12 md:p-16 space-y-12">
+                <form action={handleSubmit} className="p-12 md:p-16 space-y-12">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                         {/* Left Column: Basic Info */}
                         <div className="space-y-8">
