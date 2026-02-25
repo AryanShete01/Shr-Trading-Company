@@ -82,8 +82,8 @@ export default function AboutPage() {
                                 <div className="absolute inset-0 bg-red-600 rounded-[2rem] md:rounded-[4rem] rotate-3 scale-105 opacity-5 group-hover:rotate-0 transition-transform duration-700"></div>
                                 <div className="relative aspect-square sm:aspect-[4/3] rounded-[2rem] md:rounded-[4rem] overflow-hidden shadow-3xl bg-white/5">
                                     <img
-                                        src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070"
-                                        alt="Legacy Workspace"
+                                        src="/images/about/shop.jpg"
+                                        alt="Shreeraj Trading Company Storefront"
                                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
@@ -137,6 +137,51 @@ export default function AboutPage() {
                             </div>
                         </FadeIn>
                     </div>
+                </div>
+            </section>
+
+            {/* Certifications Section */}
+            <section className="py-20 md:py-32 bg-[#020617] border-t border-white/5 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-600/5 blur-[120px] rounded-full"></div>
+
+                <div className="standard-container relative z-10">
+                    <div className="text-center mb-16 sm:mb-24">
+                        <FadeIn direction="up">
+                            <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.4em] text-blue-500 mb-6 block">Authorised Network</span>
+                            <h2 className="text-3xl sm:text-5xl md:text-7xl font-black text-white mb-6 tracking-tighter leading-tight">
+                                CERTIFIED <span className="text-slate-500">PARTNERSHIPS.</span>
+                            </h2>
+                            <p className="text-slate-400 font-medium max-w-2xl mx-auto text-sm sm:text-lg leading-relaxed px-4">
+                                We are officially recognized and authorized direct dealers for the most trusted brands in the construction and home improvement industry.
+                            </p>
+                        </FadeIn>
+                    </div>
+
+                    <StaggerContainer staggerDelay={0.15} className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 px-4 sm:px-0">
+                        {[
+                            { img: "/images/about/cert1.jpg", title: "Kansai Nerolac" },
+                            { img: "/images/about/cert3.jpg", title: "Asian Paints" },
+                            { img: "/images/about/cert2.jpg", title: "Finolex Pipes" },
+                        ].map((cert, i) => (
+                            <StaggerItem key={i}>
+                                <div className="group relative aspect-[4/3] rounded-[2rem] sm:rounded-[3rem] overflow-hidden glass-dark border border-white/10 shadow-3xl hover:-translate-y-4 transition-all duration-500">
+                                    <img
+                                        src={cert.img}
+                                        alt={`${cert.title} Certificate`}
+                                        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500"></div>
+                                    <div className="absolute bottom-6 sm:bottom-8 left-6 sm:left-8 right-6 sm:right-8">
+                                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/10 backdrop-blur-xl rounded-xl sm:rounded-2xl border border-white/20 flex items-center justify-center mb-4 sm:mb-6">
+                                            <BadgeCheck size={20} className="text-blue-400" />
+                                        </div>
+                                        <h3 className="text-lg sm:text-xl font-black text-white uppercase tracking-widest">{cert.title}</h3>
+                                        <p className="text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] text-slate-400 mt-2">Authorised Dealership</p>
+                                    </div>
+                                </div>
+                            </StaggerItem>
+                        ))}
+                    </StaggerContainer>
                 </div>
             </section>
 
