@@ -34,10 +34,11 @@ export default async function AdminDashboard({
     // Fetch products based on the view parameter and search
     const recentProducts = await prisma.product.findMany({
         where: search ? {
-            name: {
-                contains: search,
-                mode: "insensitive"
-            }
+            OR: [
+                { name: { contains: search, mode: "insensitive" } },
+                { description: { contains: search, mode: "insensitive" } },
+                { category: { contains: search, mode: "insensitive" } },
+            ]
         } : undefined,
         orderBy: { createdAt: "desc" },
         ...(showAll || search ? {} : { take: 10 }),

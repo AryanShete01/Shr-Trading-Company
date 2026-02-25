@@ -39,7 +39,7 @@ export default function DashboardSearch() {
                 value={searchTerm}
                 onChange={(e) => handleSearch(e.target.value)}
                 placeholder="Search inventory..."
-                className="pl-12 pr-4 py-3 rounded-2xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-orange-700/10 transition-all w-64 text-sm font-medium text-slate-900"
+                className="pl-12 pr-4 py-3 rounded-2xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-orange-700/10 transition-all w-64 text-sm font-bold text-black placeholder:text-slate-400"
             />
         </div>
     );
