@@ -14,7 +14,7 @@ export default async function AdminLayout({
     }
 
     return (
-        <div className="flex min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 animate-gradient-slow font-sans">
+        <div className="flex min-h-screen bg-slate-50 font-sans">
             <AdminSidebar />
 
             {/* Main Content */}
