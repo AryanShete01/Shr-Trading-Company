@@ -19,9 +19,9 @@ export default function AdminSidebar() {
         },
         {
             name: "Products Management",
-            href: "/admin/dashboard", // Assuming this is the same for now, or could be a specific route
+            href: "/admin/dashboard?view=all",
             icon: ShoppingBag,
-            active: false, // Placeholder for specific routes
+            active: pathname === "/admin/dashboard" && typeof window !== 'undefined' && window.location.search.includes('view=all'),
         },
         {
             name: "Customer Enquiries",

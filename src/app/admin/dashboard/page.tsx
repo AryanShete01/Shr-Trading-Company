@@ -17,12 +17,21 @@ import DeleteButton from "@/components/DeleteButton";
 
 export const dynamic = "force-dynamic";
 
-export default async function AdminDashboard() {
+export default async function AdminDashboard({
+    searchParams,
+}: {
+    searchParams: { [key: string]: string | string[] | undefined };
+}) {
+    // Determine if we should show all products
+    const showAll = searchParams?.view === "all";
+
     const productsCount = await prisma.product.count();
     const enquiriesCount = await prisma.enquiry.count();
+
+    // Fetch products based on the view parameter
     const recentProducts = await prisma.product.findMany({
         orderBy: { createdAt: "desc" },
-        take: 10,
+        ...(showAll ? {} : { take: 10 }),
     });
 
     const stats = [
@@ -66,7 +75,7 @@ export default async function AdminDashboard() {
             <div className="bg-white rounded-[2rem] sm:rounded-[40px] border border-slate-100 shadow-sm overflow-hidden">
                 <div className="p-6 sm:p-8 border-b border-slate-50 flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-4">
                     <h2 className="text-xl sm:text-2xl font-black text-slate-950 tracking-tight flex items-center gap-3">
-                        Recent Inventory <span className="text-sm font-bold bg-slate-50 text-slate-400 px-3 py-1 rounded-full">{recentProducts.length}</span>
+                        {showAll ? "All Inventory" : "Recent Inventory"} <span className="text-sm font-bold bg-slate-50 text-slate-400 px-3 py-1 rounded-full">{recentProducts.length} {showAll ? `of ${productsCount}` : ""}</span>
                     </h2>
                     <div className="flex items-center gap-4">
                         <div className="relative group hidden md:block">
@@ -163,9 +172,15 @@ export default async function AdminDashboard() {
                 </div>
 
                 <div className="p-8 bg-slate-50/50 border-t border-slate-50 flex justify-center">
-                    <Link href="/admin/dashboard" className="text-slate-500 font-black text-[10px] uppercase tracking-widest flex items-center gap-2 hover:text-orange-700 transition-colors">
-                        View All Inventory <ArrowUpRight size={14} />
-                    </Link>
+                    {showAll ? (
+                        <Link href="/admin/dashboard" className="text-slate-500 font-black text-[10px] uppercase tracking-widest flex items-center gap-2 hover:text-orange-700 transition-colors">
+                            View Recent Only <ArrowUpRight size={14} className="rotate-180" />
+                        </Link>
+                    ) : (
+                        <Link href="/admin/dashboard?view=all" className="text-slate-500 font-black text-[10px] uppercase tracking-widest flex items-center gap-2 hover:text-orange-700 transition-colors">
+                            View All Inventory <ArrowUpRight size={14} />
+                        </Link>
+                    )}
                 </div>
             </div>
         </div>
