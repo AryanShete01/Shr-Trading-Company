@@ -107,7 +107,7 @@ export default function AboutPage() {
 
                                 <div className="mb-12 p-6 rounded-[2rem] bg-white/5 border border-white/10 border-l-4 border-l-red-500">
                                     <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-1">Founded By</p>
-                                    <p className="text-xl sm:text-2xl font-black text-white tracking-tight">Vikasrao Kachru Shete <span className="text-red-500 mx-2">&</span> Vijay Kachru Shete</p>
+                                    <p className="text-xl sm:text-2xl font-black text-white tracking-tight">Vikasrao Shete <span className="text-red-500 mx-2">&</span> Vijay Shete</p>
                                 </div>
 
                                 <div className="flex flex-wrap flex-col sm:flex-row gap-4 sm:gap-6 mt-12 sm:mt-16">
