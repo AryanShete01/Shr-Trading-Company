@@ -4,6 +4,7 @@ import { Toaster } from "react-hot-toast";
 import CustomCursor from "@/components/CustomCursor";
 import Preloader from "@/components/animations/Preloader";
 import SeedanceBackground from "@/components/animations/SeedanceBackground";
+import Chatbot from "@/components/Chatbot";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -40,6 +41,7 @@ export default function RootLayout({
         <SeedanceBackground />
         <CustomCursor />
         {children}
+        <Chatbot />
         <Toaster
           position="top-center"
           reverseOrder={false}
