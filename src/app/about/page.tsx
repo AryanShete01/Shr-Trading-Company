@@ -149,19 +149,19 @@ export default function AboutPage() {
 
                     <StaggerContainer staggerDelay={0.15} className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 px-4 sm:px-0">
                         {[
-                            { img: "/images/about/cert1.jpg", title: "Kansai Nerolac" },
-                            { img: "/images/about/cert3.jpg", title: "Asian Paints" },
-                            { img: "/images/about/cert2.jpg", title: "Finolex Pipes" },
+                            { img: "/images/about/cert_asian.png", title: "Asian Paints" },
+                            { img: "/images/about/cert_finolex.png", title: "Finolex Pipes" },
+                            { img: "/images/about/cert_nerolac.png", title: "Kansai Nerolac" },
                         ].map((cert, i) => (
                             <StaggerItem key={i}>
-                                <div className="group relative aspect-[4/3] rounded-[2rem] sm:rounded-[3rem] overflow-hidden glass-dark border border-white/10 shadow-3xl hover:-translate-y-4 transition-all duration-500">
+                                <div className="group relative aspect-[4/3] rounded-[2rem] sm:rounded-[3rem] overflow-hidden bg-white/5 border border-white/10 shadow-3xl hover:-translate-y-4 transition-all duration-500 flex items-center justify-center p-4 sm:p-6">
                                     <img
                                         src={cert.img}
                                         alt={`${cert.title} Certificate`}
-                                        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                                        className="w-full h-full object-contain opacity-90 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 relative z-0"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500"></div>
-                                    <div className="absolute bottom-6 sm:bottom-8 left-6 sm:left-8 right-6 sm:right-8">
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/40 to-transparent pointer-events-none z-10"></div>
+                                    <div className="absolute bottom-6 sm:bottom-8 left-6 sm:left-8 right-6 sm:right-8 z-20 pointer-events-none">
                                         <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/10 backdrop-blur-xl rounded-xl sm:rounded-2xl border border-white/20 flex items-center justify-center mb-4 sm:mb-6">
                                             <BadgeCheck size={20} className="text-blue-400" />
                                         </div>
