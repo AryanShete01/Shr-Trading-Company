@@ -16,6 +16,7 @@ const predefinedResponses: Record<string, string> = {
     "hours": "Our trading hours are Monday to Saturday, from 9:00 AM to 8:00 PM. We look forward to serving you.",
     "bulk": "Yes, we handle large-scale procurement and bulk orders for contractors and infrastructure projects. Please contact our technical desk for quotes.",
     "contact": "You can reach us directly at +91 99222 34646 or email us at shreerajtradingco@yahoo.com.",
+    "owner": "Shreeraj Trading Company was founded by Vikasrao Kachru Shete and Vijay Kachru Shete. We are proud to be a family-owned business serving the community since 1995.",
 };
 
 export default function Chatbot() {
@@ -60,6 +61,7 @@ export default function Chatbot() {
                 if (lowerText.includes("time") || lowerText.includes("hour") || lowerText.includes("open")) botText = predefinedResponses["hours"];
                 if (lowerText.includes("bulk") || lowerText.includes("wholesale")) botText = predefinedResponses["bulk"];
                 if (lowerText.includes("phone") || lowerText.includes("contact") || lowerText.includes("call") || lowerText.includes("email")) botText = predefinedResponses["contact"];
+                if (lowerText.includes("owner") || lowerText.includes("founder") || lowerText.includes("who owns")) botText = predefinedResponses["owner"];
             }
 
             const botMsg: Message = { id: (Date.now() + 1).toString(), type: "bot", text: botText };
