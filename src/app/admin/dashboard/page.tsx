@@ -14,6 +14,7 @@ import {
 import Link from "next/link";
 import { formatPrice } from "@/lib/utils";
 import DeleteButton from "@/components/DeleteButton";
+import DashboardSearch from "@/components/DashboardSearch";
 
 export const dynamic = "force-dynamic";
 
@@ -25,14 +26,21 @@ export default async function AdminDashboard({
     // Determine if we should show all products
     const resolvedSearchParams = await searchParams;
     const showAll = resolvedSearchParams?.view === "all";
+    const search = resolvedSearchParams?.search as string | undefined;
 
     const productsCount = await prisma.product.count();
     const enquiriesCount = await prisma.enquiry.count();
 
-    // Fetch products based on the view parameter
+    // Fetch products based on the view parameter and search
     const recentProducts = await prisma.product.findMany({
+        where: search ? {
+            name: {
+                contains: search,
+                mode: "insensitive"
+            }
+        } : undefined,
         orderBy: { createdAt: "desc" },
-        ...(showAll ? {} : { take: 10 }),
+        ...(showAll || search ? {} : { take: 10 }),
     });
 
     const stats = [
@@ -76,17 +84,10 @@ export default async function AdminDashboard({
             <div className="bg-white rounded-[2rem] sm:rounded-[40px] border border-slate-100 shadow-sm overflow-hidden">
                 <div className="p-6 sm:p-8 border-b border-slate-50 flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-4">
                     <h2 className="text-xl sm:text-2xl font-black text-slate-950 tracking-tight flex items-center gap-3">
-                        {showAll ? "All Inventory" : "Recent Inventory"} <span className="text-sm font-bold bg-slate-50 text-slate-400 px-3 py-1 rounded-full">{recentProducts.length} {showAll ? `of ${productsCount}` : ""}</span>
+                        {showAll || search ? (search ? "Search Results" : "All Inventory") : "Recent Inventory"} <span className="text-sm font-bold bg-slate-50 text-slate-400 px-3 py-1 rounded-full">{recentProducts.length} {showAll ? `of ${productsCount}` : ""}</span>
                     </h2>
                     <div className="flex items-center gap-4">
-                        <div className="relative group hidden md:block">
-                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange-700 transition-colors" size={18} />
-                            <input
-                                type="text"
-                                placeholder="Search inventory..."
-                                className="pl-12 pr-4 py-3 rounded-2xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-orange-700/10 transition-all w-64 text-sm font-medium"
-                            />
-                        </div>
+                        <DashboardSearch />
                         <button className="p-3 rounded-2xl bg-slate-50 text-slate-600 hover:bg-slate-100 transition-colors">
                             <Filter size={20} />
                         </button>
@@ -173,7 +174,7 @@ export default async function AdminDashboard({
                 </div>
 
                 <div className="p-8 bg-slate-50/50 border-t border-slate-50 flex justify-center">
-                    {showAll ? (
+                    {showAll || search ? (
                         <Link href="/admin/dashboard" className="text-slate-500 font-black text-[10px] uppercase tracking-widest flex items-center gap-2 hover:text-orange-700 transition-colors">
                             View Recent Only <ArrowUpRight size={14} className="rotate-180" />
                         </Link>
