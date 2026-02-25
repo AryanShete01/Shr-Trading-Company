@@ -44,7 +44,7 @@ const FloatingIcon = ({ icon: Icon, delay, initialX, initialY, scale = 1, opacit
                 opacity: { duration: 2, delay: delay }
             }}
         >
-            <div className="p-8 rounded-3xl glass backdrop-blur-xl border border-white/5 shadow-2xl">
+            <div className="p-8 rounded-3xl glass backdrop-blur-none sm:backdrop-blur-xl border border-white/5 shadow-2xl">
                 <Icon size={48} className="text-primary/40" />
             </div>
         </motion.div>
@@ -53,6 +53,7 @@ const FloatingIcon = ({ icon: Icon, delay, initialX, initialY, scale = 1, opacit
 
 export default function SeedanceBackground() {
     const [mounted, setMounted] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
     const { scrollYProgress } = useScroll();
 
     // Parallax effect for the background glows
@@ -61,6 +62,12 @@ export default function SeedanceBackground() {
 
     useEffect(() => {
         setMounted(true);
+        const checkMobile = () => {
+            setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+        };
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
     }, []);
 
     if (!mounted) return null;
@@ -81,16 +88,21 @@ export default function SeedanceBackground() {
             {/* Drifting Industrial Assets */}
             <FloatingIcon icon={Hammer} delay={0} initialX={10} initialY={20} scale={0.8} opacity={0.05} />
             <FloatingIcon icon={Paintbrush} delay={2} initialX={85} initialY={15} scale={1.2} opacity={0.08} />
-            <FloatingIcon icon={Zap} delay={4} initialX={75} initialY={70} scale={0.9} opacity={0.06} />
-            <FloatingIcon icon={Droplets} delay={1} initialX={5} initialY={65} scale={1.1} opacity={0.07} />
-            <FloatingIcon icon={ShieldCheck} delay={3} initialX={40} initialY={85} scale={0.7} opacity={0.04} />
-            <FloatingIcon icon={Wrench} delay={5} initialX={50} initialY={10} scale={0.8} opacity={0.05} />
 
-            {/* Grain Texture */}
-            <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay">
+            {!isMobile && (
+                <>
+                    <FloatingIcon icon={Zap} delay={4} initialX={75} initialY={70} scale={0.9} opacity={0.06} />
+                    <FloatingIcon icon={Droplets} delay={1} initialX={5} initialY={65} scale={1.1} opacity={0.07} />
+                    <FloatingIcon icon={ShieldCheck} delay={3} initialX={40} initialY={85} scale={0.7} opacity={0.04} />
+                    <FloatingIcon icon={Wrench} delay={5} initialX={50} initialY={10} scale={0.8} opacity={0.05} />
+                </>
+            )}
+
+            {/* Grain Texture - Optimized on mobile */}
+            <div className="absolute inset-0 opacity-[0.02] sm:opacity-[0.03] pointer-events-none mix-blend-overlay">
                 <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                     <filter id="noiseFilter">
-                        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+                        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves={isMobile ? 1 : 3} stitchTiles="stitch" />
                     </filter>
                     <rect width="100%" height="100%" filter="url(#noiseFilter)" />
                 </svg>
