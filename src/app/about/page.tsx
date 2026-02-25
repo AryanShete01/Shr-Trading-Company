@@ -9,14 +9,14 @@ export default function AboutPage() {
             <Navbar />
 
             {/* Immersive Header */}
-            <section className="bg-slate-950 pt-48 pb-40 overflow-hidden relative">
+            <section className="bg-slate-950 pt-32 pb-24 md:pt-48 md:pb-40 overflow-hidden relative">
                 <div className="absolute top-0 left-1/4 w-[50%] h-full bg-orange-600/10 rounded-full blur-[150px] -translate-y-1/2 animate-blob"></div>
 
                 <div className="standard-container relative z-10 text-center">
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-slate-400 mb-10 font-black text-[10px] uppercase tracking-[0.3em]">
                         Establishment 1995
                     </div>
-                    <h1 className="text-5xl sm:text-6xl md:text-8xl font-black text-white mb-8 sm:mb-10 tracking-tighter leading-[1.1] md:leading-none break-words">
+                    <h1 className="text-4xl sm:text-5xl md:text-8xl font-black text-white mb-6 sm:mb-10 tracking-tighter leading-[1.1] md:leading-none break-words">
                         FOUNDED ON <br /><span className="text-gradient">EXCELLENCE.</span>
                     </h1>
                     <p className="text-slate-400 text-lg sm:text-xl md:text-2xl font-medium max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
@@ -26,7 +26,7 @@ export default function AboutPage() {
             </section>
 
             {/* Core Pillars - Overlapping Section */}
-            <section className="relative z-20 -mt-24 mb-40">
+            <section className="relative z-20 -mt-12 md:-mt-24 mb-20 md:mb-40">
                 <div className="standard-container">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
@@ -68,19 +68,19 @@ export default function AboutPage() {
             </section>
 
             {/* Legacy Section */}
-            <section className="py-40 bg-slate-50/50">
+            <section className="py-20 md:py-40 bg-slate-50/50">
                 <div className="standard-container">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
                         <div className="relative group">
-                            <div className="absolute inset-0 bg-orange-600 rounded-[4rem] rotate-3 scale-105 opacity-5 group-hover:rotate-0 transition-transform duration-700"></div>
-                            <div className="relative aspect-[4/3] rounded-[4rem] overflow-hidden shadow-3xl bg-slate-100">
+                            <div className="absolute inset-0 bg-orange-600 rounded-[2rem] md:rounded-[4rem] rotate-3 scale-105 opacity-5 group-hover:rotate-0 transition-transform duration-700"></div>
+                            <div className="relative aspect-[4/3] rounded-[2rem] md:rounded-[4rem] overflow-hidden shadow-3xl bg-slate-100">
                                 <img
                                     src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070"
                                     alt="Legacy Workspace"
                                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent"></div>
-                                <div className="absolute bottom-6 md:bottom-12 left-6 md:left-12 right-6 md:right-12 glass rounded-2xl md:rounded-3xl p-6 md:p-10 flex flex-col sm:flex-row justify-between items-center text-white border-white/20 gap-6 sm:gap-0">
+                                <div className="absolute bottom-4 left-4 right-4 md:bottom-12 md:left-12 md:right-12 glass rounded-xl md:rounded-3xl p-4 sm:p-6 md:p-10 flex flex-col sm:flex-row justify-between items-center text-white border-white/20 gap-4 sm:gap-0">
                                     <div className="text-center">
                                         <p className="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-orange-400 mb-1 md:mb-2">Established</p>
                                         <p className="text-xl md:text-3xl font-black">1995</p>
@@ -113,14 +113,14 @@ export default function AboutPage() {
                                 </p>
                             </div>
 
-                            <div className="flex flex-wrap gap-6 mt-16">
-                                <div className="flex items-center gap-4 bg-white px-8 py-5 rounded-2xl border border-slate-100 shadow-sm">
+                            <div className="flex flex-wrap flex-col sm:flex-row gap-4 sm:gap-6 mt-12 sm:mt-16">
+                                <div className="flex items-center gap-4 bg-white px-6 sm:px-8 py-4 sm:py-5 rounded-2xl border border-slate-100 shadow-sm w-full sm:w-auto">
                                     <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-600">
                                         <Briefcase size={20} />
                                     </div>
                                     <span className="font-black text-xs uppercase tracking-widest text-slate-900">Trade Certified</span>
                                 </div>
-                                <div className="flex items-center gap-4 bg-white px-8 py-5 rounded-2xl border border-slate-100 shadow-sm">
+                                <div className="flex items-center gap-4 bg-white px-6 sm:px-8 py-4 sm:py-5 rounded-2xl border border-slate-100 shadow-sm w-full sm:w-auto">
                                     <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
                                         <Star size={20} />
                                     </div>
@@ -133,9 +133,9 @@ export default function AboutPage() {
             </section>
 
             {/* Powerful Call to Action */}
-            <section className="py-24 sm:py-32 md:py-40">
+            <section className="py-16 sm:py-24 md:py-40">
                 <div className="standard-container">
-                    <div className="relative rounded-[3rem] sm:rounded-[5rem] overflow-hidden p-8 sm:p-16 md:p-32 text-center bg-slate-950">
+                    <div className="relative rounded-[2.5rem] sm:rounded-[5rem] overflow-hidden p-6 sm:p-12 md:p-32 text-center bg-slate-950">
                         <div className="absolute inset-0 z-0 scale-125 opacity-20 bg-[url('https://images.unsplash.com/photo-1513467535987-fd81bc206228?q=80&w=1932')] bg-cover"></div>
                         <div className="absolute inset-0 bg-gradient-to-tr from-slate-950 via-slate-900/80 to-transparent z-10"></div>
 
@@ -149,13 +149,13 @@ export default function AboutPage() {
                             <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center items-center px-4 sm:px-0">
                                 <Link
                                     href="/products"
-                                    className="w-full sm:w-auto px-12 py-7 rounded-3xl bg-white text-slate-950 font-black text-sm uppercase tracking-[0.2em] hover:scale-105 active:scale-95 transition-all shadow-3xl flex items-center justify-center gap-4"
+                                    className="w-full sm:w-auto px-8 sm:px-12 py-5 sm:py-7 rounded-2xl sm:rounded-3xl bg-white text-slate-950 font-black text-xs sm:text-sm uppercase tracking-[0.2em] hover:scale-105 active:scale-95 transition-all shadow-3xl flex items-center justify-center gap-4"
                                 >
                                     Browse Materials <TrendingUp size={18} className="text-orange-600" />
                                 </Link>
                                 <a
                                     href="tel:+918306063148"
-                                    className="w-full sm:w-auto px-12 py-7 rounded-3xl bg-white/5 border border-white/10 text-white font-black text-sm uppercase tracking-[0.2em] backdrop-blur-xl hover:bg-white/10 transition-all flex items-center justify-center gap-4"
+                                    className="w-full sm:w-auto px-8 sm:px-12 py-5 sm:py-7 rounded-2xl sm:rounded-3xl bg-white/5 border border-white/10 text-white font-black text-xs sm:text-sm uppercase tracking-[0.2em] backdrop-blur-xl hover:bg-white/10 transition-all flex items-center justify-center gap-4"
                                 >
                                     Quick Call <Phone size={18} className="text-orange-500" />
                                 </a>
