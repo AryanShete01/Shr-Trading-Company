@@ -89,7 +89,7 @@ export default function Chatbot() {
             </button>
 
             {/* Chatbot Panel */}
-            <div className={`absolute bottom-0 right-0 w-[calc(100vw-3rem)] sm:w-[380px] bg-[#0f172a] rounded-[2rem] border border-white/10 shadow-3xl shadow-black/50 overflow-hidden flex flex-col transition-all duration-500 origin-bottom-right ${isOpen ? "scale-100 opacity-100 translate-y-0" : "scale-50 opacity-0 translate-y-10 pointer-events-none"}`} style={{ height: "600px", maxHeight: "calc(100vh - 6rem)" }}>
+            <div className={`absolute bottom-0 right-0 w-[calc(100vw-3rem)] sm:w-[380px] bg-[#0f172a] rounded-[2rem] border border-white/10 shadow-3xl shadow-black/50 overflow-hidden flex flex-col transition-all duration-500 origin-bottom-right ${isOpen ? "scale-100 opacity-100 translate-y-0 pointer-events-auto" : "scale-50 opacity-0 translate-y-10 pointer-events-none"}`} style={{ height: "600px", maxHeight: "calc(100vh - 6rem)" }}>
 
                 {/* Header */}
                 <div className="bg-gradient-to-r from-primary to-primary-hover p-5 flex items-center justify-between relative overflow-hidden shrink-0">
@@ -118,8 +118,8 @@ export default function Chatbot() {
                     {messages.map((msg) => (
                         <div key={msg.id} className={`flex ${msg.type === "user" ? "justify-end" : "justify-start"} animate-in slide-in-from-bottom-2 duration-300`}>
                             <div className={`max-w-[85%] rounded-2xl p-4 sm:p-5 text-sm font-medium leading-relaxed ${msg.type === "user"
-                                    ? "bg-primary text-white rounded-br-sm shadow-xl shadow-primary/10"
-                                    : "bg-white/5 border border-white/10 text-slate-300 rounded-bl-sm"
+                                ? "bg-primary text-white rounded-br-sm shadow-xl shadow-primary/10"
+                                : "bg-white/5 border border-white/10 text-slate-300 rounded-bl-sm"
                                 }`}>
                                 {msg.text}
                             </div>
