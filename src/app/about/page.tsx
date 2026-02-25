@@ -80,27 +80,12 @@ export default function AboutPage() {
                         <FadeIn direction="up">
                             <div className="relative group">
                                 <div className="absolute inset-0 bg-red-600 rounded-[2rem] md:rounded-[4rem] rotate-3 scale-105 opacity-5 group-hover:rotate-0 transition-transform duration-700"></div>
-                                <div className="relative aspect-square sm:aspect-[4/3] rounded-[2rem] md:rounded-[4rem] overflow-hidden shadow-3xl bg-white/5">
+                                <div className="relative rounded-[2rem] md:rounded-[4rem] overflow-hidden shadow-3xl bg-[#020617] p-2 border border-white/5">
                                     <img
                                         src="/images/about/shop.jpg"
                                         alt="Shreeraj Trading Company Storefront"
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                                        className="w-full h-auto max-h-[80vh] object-contain rounded-[1.5rem] md:rounded-[3.5rem] group-hover:scale-[1.02] transition-transform duration-1000"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                                    <div className="absolute bottom-4 left-4 right-4 md:bottom-12 md:left-12 md:right-12 glass-dark rounded-xl md:rounded-3xl p-4 sm:p-6 md:p-10 grid grid-cols-3 divide-x divide-white/10 text-white border-white/10 items-center">
-                                        <div className="text-center px-1 sm:px-4">
-                                            <p className="text-[7px] sm:text-[8px] md:text-[10px] font-black uppercase tracking-widest text-red-500 mb-1 sm:mb-2 line-clamp-1">Since</p>
-                                            <p className="text-lg sm:text-xl md:text-3xl font-black truncate">1995</p>
-                                        </div>
-                                        <div className="text-center px-1 sm:px-4">
-                                            <p className="text-[7px] sm:text-[8px] md:text-[10px] font-black uppercase tracking-widest text-red-500 mb-1 sm:mb-2 line-clamp-1">Inventory</p>
-                                            <p className="text-lg sm:text-xl md:text-3xl font-black truncate">5000+</p>
-                                        </div>
-                                        <div className="text-center px-1 sm:px-4">
-                                            <p className="text-[7px] sm:text-[8px] md:text-[10px] font-black uppercase tracking-widest text-red-500 mb-1 sm:mb-2 line-clamp-1">Projects</p>
-                                            <p className="text-lg sm:text-xl md:text-3xl font-black truncate">2.5k+</p>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </FadeIn>
@@ -111,13 +96,18 @@ export default function AboutPage() {
                                 <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white mb-8 sm:mb-10 tracking-tighter leading-[1.1] md:leading-[0.9] break-words">
                                     MORE THAN A <br /><span className="text-slate-400">SUPPLIER.</span>
                                 </h2>
-                                <div className="space-y-6 sm:space-y-8 text-lg sm:text-xl text-slate-400 font-medium leading-relaxed mb-12">
+                                <div className="space-y-6 sm:space-y-8 text-lg sm:text-xl text-slate-400 font-medium leading-relaxed mb-10">
                                     <p>
                                         Shreeraj Trading Company began with a singular mission: to eliminate the friction in high-end construction by providing immediate access to premium materials.
                                     </p>
                                     <p>
                                         Over the decades, we have evolved from a local hardware shop into a regional authority on paints, plumbing components, and industrial-grade fasteners. Our growth is mirrored by the skylines of the communities we serve.
                                     </p>
+                                </div>
+
+                                <div className="mb-12 p-6 rounded-[2rem] bg-white/5 border border-white/10 border-l-4 border-l-red-500">
+                                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-1">Founded By</p>
+                                    <p className="text-xl sm:text-2xl font-black text-white tracking-tight">Vikasrao Kachru Shete <span className="text-red-500 mx-2">&</span> Vijay Kachru Shete</p>
                                 </div>
 
                                 <div className="flex flex-wrap flex-col sm:flex-row gap-4 sm:gap-6 mt-12 sm:mt-16">
