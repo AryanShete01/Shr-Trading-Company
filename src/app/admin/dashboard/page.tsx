@@ -20,10 +20,11 @@ export const dynamic = "force-dynamic";
 export default async function AdminDashboard({
     searchParams,
 }: {
-    searchParams: { [key: string]: string | string[] | undefined };
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
     // Determine if we should show all products
-    const showAll = searchParams?.view === "all";
+    const resolvedSearchParams = await searchParams;
+    const showAll = resolvedSearchParams?.view === "all";
 
     const productsCount = await prisma.product.count();
     const enquiriesCount = await prisma.enquiry.count();
