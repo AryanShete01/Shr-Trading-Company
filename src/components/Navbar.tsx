@@ -86,7 +86,7 @@ export default function Navbar() {
                         </div>
                         <div className="pt-6 border-t border-white/5 flex flex-col gap-4">
                             <Link
-                                href="tel:+918306063148"
+                                href="tel:+919922234646"
                                 className="flex items-center gap-4 px-6 text-slate-400"
                                 onClick={() => setIsOpen(false)}
                             >
@@ -95,7 +95,7 @@ export default function Navbar() {
                                 </div>
                                 <div className="flex flex-col">
                                     <span className="text-[10px] uppercase font-black tracking-widest text-slate-400">Call Us Now</span>
-                                    <span className="font-bold">+91 83060 63148</span>
+                                    <span className="font-bold">+91 99222 34646</span>
                                 </div>
                             </Link>
                             <Link

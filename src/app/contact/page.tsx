@@ -25,9 +25,9 @@ export default function ContactPage() {
         {
             icon: <Phone size={24} />,
             title: "Direct Support",
-            detail: "+91 83060 63148",
+            detail: "+91 99222 34646",
             sub: "Mon-Sat • 9AM - 8PM",
-            link: "tel:+918306063148",
+            link: "tel:+919922234646",
             color: "text-blue-500 bg-blue-500/10"
         },
         {
@@ -35,7 +35,7 @@ export default function ContactPage() {
             title: "Digital Desk",
             detail: "WhatsApp Enquiry",
             sub: "Instant Stock Checks",
-            link: "https://wa.me/918306063148",
+            link: "https://wa.me/919767287755",
             color: "text-emerald-500 bg-emerald-500/10"
         },
     ];

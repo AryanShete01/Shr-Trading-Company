@@ -94,13 +94,13 @@ export default function Footer() {
                                 <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0 border border-white/10 group-hover:bg-primary group-hover:border-primary transition-colors">
                                     <Phone className="text-primary group-hover:text-white" size={18} />
                                 </div>
-                                <a href="tel:+918306063148" className="text-slate-400 hover:text-white transition-colors self-center">+91 83060 63148</a>
+                                <a href="tel:+919922234646" className="text-slate-400 hover:text-white transition-colors self-center">+91 99222 34646</a>
                             </li>
                             <li className="flex gap-4 group">
                                 <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0 border border-white/10 group-hover:bg-primary group-hover:border-primary transition-colors">
                                     <Mail className="text-primary group-hover:text-white" size={18} />
                                 </div>
-                                <a href="mailto:shreeraj.trading@gmail.com" className="text-slate-400 hover:text-white transition-colors self-center break-all md:break-normal py-2">shreeraj.trading@gmail.com</a>
+                                <a href="mailto:shreerajtradingco@yahoo.com" className="text-slate-400 hover:text-white transition-colors self-center break-all md:break-normal py-2">shreerajtradingco@yahoo.com</a>
                             </li>
                         </ul>
                     </div>

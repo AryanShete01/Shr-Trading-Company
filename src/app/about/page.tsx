@@ -162,7 +162,7 @@ export default function AboutPage() {
                                     Browse Materials <TrendingUp size={18} className="text-red-600" />
                                 </Link>
                                 <a
-                                    href="tel:+918306063148"
+                                    href="tel:+919922234646"
                                     className="w-full sm:w-auto px-8 sm:px-12 py-5 sm:py-7 rounded-2xl sm:rounded-3xl bg-white/5 border border-white/10 text-white font-black text-xs sm:text-sm uppercase tracking-[0.2em] backdrop-blur-xl hover:bg-white/10 transition-all flex items-center justify-center gap-4"
                                 >
                                     Quick Call <Phone size={18} className="text-red-500" />
