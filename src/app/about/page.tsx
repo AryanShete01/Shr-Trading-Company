@@ -73,27 +73,25 @@ export default function AboutPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
                         <div className="relative group">
                             <div className="absolute inset-0 bg-orange-600 rounded-[2rem] md:rounded-[4rem] rotate-3 scale-105 opacity-5 group-hover:rotate-0 transition-transform duration-700"></div>
-                            <div className="relative aspect-[4/3] rounded-[2rem] md:rounded-[4rem] overflow-hidden shadow-3xl bg-slate-100">
+                            <div className="relative aspect-square sm:aspect-[4/3] rounded-[2rem] md:rounded-[4rem] overflow-hidden shadow-3xl bg-slate-100">
                                 <img
                                     src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070"
                                     alt="Legacy Workspace"
                                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent"></div>
-                                <div className="absolute bottom-4 left-4 right-4 md:bottom-12 md:left-12 md:right-12 glass rounded-xl md:rounded-3xl p-4 sm:p-6 md:p-10 flex flex-col sm:flex-row justify-between items-center text-white border-white/20 gap-4 sm:gap-0">
-                                    <div className="text-center">
-                                        <p className="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-orange-400 mb-1 md:mb-2">Established</p>
-                                        <p className="text-xl md:text-3xl font-black">1995</p>
+                                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 sm:from-slate-950/60 to-transparent"></div>
+                                <div className="absolute bottom-4 left-4 right-4 md:bottom-12 md:left-12 md:right-12 glass rounded-xl md:rounded-3xl p-4 sm:p-6 md:p-10 grid grid-cols-3 divide-x divide-white/20 text-white border-white/20 items-center">
+                                    <div className="text-center px-1 sm:px-4">
+                                        <p className="text-[7px] sm:text-[8px] md:text-[10px] font-black uppercase tracking-widest text-orange-400 mb-1 sm:mb-2 line-clamp-1">Since</p>
+                                        <p className="text-lg sm:text-xl md:text-3xl font-black truncate">1995</p>
                                     </div>
-                                    <div className="hidden sm:block w-px h-12 bg-white/20"></div>
-                                    <div className="text-center">
-                                        <p className="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-orange-400 mb-1 md:mb-2">Inventory Items</p>
-                                        <p className="text-xl md:text-3xl font-black">5000+</p>
+                                    <div className="text-center px-1 sm:px-4">
+                                        <p className="text-[7px] sm:text-[8px] md:text-[10px] font-black uppercase tracking-widest text-orange-400 mb-1 sm:mb-2 line-clamp-1">Inventory</p>
+                                        <p className="text-lg sm:text-xl md:text-3xl font-black truncate">5000+</p>
                                     </div>
-                                    <div className="hidden sm:block w-px h-12 bg-white/20"></div>
-                                    <div className="text-center">
-                                        <p className="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-orange-400 mb-1 md:mb-2">Projects Served</p>
-                                        <p className="text-xl md:text-3xl font-black">2.5k+</p>
+                                    <div className="text-center px-1 sm:px-4">
+                                        <p className="text-[7px] sm:text-[8px] md:text-[10px] font-black uppercase tracking-widest text-orange-400 mb-1 sm:mb-2 line-clamp-1">Projects</p>
+                                        <p className="text-lg sm:text-xl md:text-3xl font-black truncate">2.5k+</p>
                                     </div>
                                 </div>
                             </div>
