@@ -17,8 +17,19 @@ export default async function EnquiriesPage() {
     const enquiries = await prisma.enquiry.findMany({
         orderBy: { createdAt: "desc" },
         take: 50,
-        include: {
-            product: true
+        select: {
+            id: true,
+            name: true,
+            phone: true,
+            message: true,
+            status: true,
+            createdAt: true,
+            product: {
+                select: {
+                    id: true,
+                    name: true,
+                }
+            }
         }
     });
 

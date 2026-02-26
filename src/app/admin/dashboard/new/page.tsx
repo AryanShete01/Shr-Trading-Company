@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { createProduct } from "@/lib/actions";
 import { ChevronLeft, Save, Loader2, Package, Image as ImageIcon, Info } from "lucide-react";
 import Link from "next/link";
@@ -10,6 +11,7 @@ export default function NewProductPage() {
     const [loading, setLoading] = useState(false);
     const [preview, setPreview] = useState<string | null>(null);
     const [compressedFile, setCompressedFile] = useState<File | null>(null);
+    const router = useRouter();
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
@@ -65,9 +67,14 @@ export default function NewProductPage() {
             if (compressedFile) {
                 formData.set("image", compressedFile);
             }
-            await createProduct(formData);
-        } finally {
-            // Error handling or fallback if createProduct doesn't redirect
+            const res = await createProduct(formData);
+            if (res?.success) {
+                toast.success("Product created successfully!");
+                router.push("/admin/dashboard");
+                router.refresh();
+            }
+        } catch (error) {
+            toast.error("Failed to create product");
             setLoading(false);
         }
     };

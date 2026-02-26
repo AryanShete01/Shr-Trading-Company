@@ -48,7 +48,7 @@ export async function createProduct(formData: FormData) {
 
     revalidatePath("/products");
     revalidatePath("/admin/dashboard");
-    redirect("/admin/dashboard");
+    return { success: true };
 }
 
 export async function updateProduct(id: string, formData: FormData) {
@@ -96,7 +96,7 @@ export async function updateProduct(id: string, formData: FormData) {
     revalidatePath("/products");
     revalidatePath(`/products/${id}`);
     revalidatePath("/admin/dashboard");
-    redirect("/admin/dashboard");
+    return { success: true };
 }
 
 export async function deleteProduct(id: string) {

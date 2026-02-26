@@ -6,6 +6,7 @@ import { ChevronLeft, Save, Loader2, Info, Package, Image as ImageIcon, Edit3 } 
 import Link from "next/link";
 import { notFound, useRouter } from "next/navigation";
 import { useState, useEffect, use } from "react";
+import { toast } from "react-hot-toast";
 
 export default function EditProductPage({
     params: paramsPromise,
@@ -130,7 +131,14 @@ export default function EditProductPage({
                             if (compressedFile) {
                                 formData.set("image", compressedFile);
                             }
-                            await updateProduct(product.id, formData);
+                            const res = await updateProduct(product.id, formData);
+                            if (res?.success) {
+                                toast.success("Product updated successfully!");
+                                router.push("/admin/dashboard");
+                                router.refresh();
+                            }
+                        } catch (error) {
+                            toast.error("Failed to update product");
                         } finally {
                             setSubmitting(false);
                         }

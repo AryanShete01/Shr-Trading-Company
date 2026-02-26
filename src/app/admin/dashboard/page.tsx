@@ -23,26 +23,47 @@ export default async function AdminDashboard({
 }: {
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
-    // Determine if we should show all products
+    // Determine page configuration
     const resolvedSearchParams = await searchParams;
-    const showAll = resolvedSearchParams?.view === "all";
     const search = resolvedSearchParams?.search as string | undefined;
+    const page = Math.max(1, parseInt((resolvedSearchParams?.page as string) || "1"));
+    const limit = 15;
+    const skip = (page - 1) * limit;
 
-    const productsCount = await prisma.product.count();
-    const enquiriesCount = await prisma.enquiry.count();
+    // Parallelize all DB operations
+    const [productsCount, enquiriesCount, recentProducts] = await Promise.all([
+        prisma.product.count({
+            where: search ? {
+                OR: [
+                    { name: { contains: search, mode: "insensitive" } },
+                    { category: { contains: search, mode: "insensitive" } },
+                ]
+            } : undefined,
+        }),
+        prisma.enquiry.count(),
+        prisma.product.findMany({
+            where: search ? {
+                OR: [
+                    { name: { contains: search, mode: "insensitive" } },
+                    { category: { contains: search, mode: "insensitive" } },
+                ]
+            } : undefined,
+            orderBy: { createdAt: "desc" },
+            skip,
+            take: limit,
+            // Optimized: only select essential fields
+            select: {
+                id: true,
+                name: true,
+                price: true,
+                category: true,
+                image: true,
+                createdAt: true
+            }
+        })
+    ]);
 
-    // Fetch products based on the view parameter and search
-    const recentProducts = await prisma.product.findMany({
-        where: search ? {
-            OR: [
-                { name: { contains: search, mode: "insensitive" } },
-                { description: { contains: search, mode: "insensitive" } },
-                { category: { contains: search, mode: "insensitive" } },
-            ]
-        } : undefined,
-        orderBy: { createdAt: "desc" },
-        ...(showAll || search ? {} : { take: 10 }),
-    });
+    const totalPages = Math.ceil(productsCount / limit);
 
     const stats = [
         { label: "Total Products", value: productsCount, icon: <Package size={24} />, color: "text-blue-600", bg: "bg-blue-50" },
@@ -60,7 +81,7 @@ export default async function AdminDashboard({
                 </div>
                 <Link
                     href="/admin/dashboard/new"
-                    className="bg-orange-700 text-white px-8 py-4 rounded-[20px] font-black text-sm uppercase tracking-widest flex items-center gap-2 hover:bg-orange-800 transition-all shadow-xl shadow-orange-700/20 active:scale-95"
+                    className="bg-orange-700 text-white px-8 py-4 rounded-[20px] font-black text-sm uppercase tracking-widest flex items-center gap-2 hover:bg-orange-800 transition-colors shadow-xl shadow-orange-700/20 active:scale-95"
                 >
                     <Plus size={20} /> Add New Product
                 </Link>
@@ -69,8 +90,8 @@ export default async function AdminDashboard({
             {/* Stats Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
                 {stats.map((stat, i) => (
-                    <div key={i} className="bg-white p-8 rounded-[32px] border border-slate-100 shadow-sm flex items-center gap-6 group hover:border-orange-200 transition-all duration-300">
-                        <div className={`${stat.bg} ${stat.color} w-16 h-16 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110`}>
+                    <div key={i} className="bg-white p-8 rounded-[32px] border border-slate-100 shadow-sm flex items-center gap-6 group hover:border-orange-200 transition-colors duration-200">
+                        <div className={`${stat.bg} ${stat.color} w-16 h-16 rounded-2xl flex items-center justify-center`}>
                             {stat.icon}
                         </div>
                         <div>
@@ -85,7 +106,7 @@ export default async function AdminDashboard({
             <div className="bg-white rounded-[2rem] sm:rounded-[40px] border border-slate-100 shadow-sm overflow-hidden">
                 <div className="p-6 sm:p-8 border-b border-slate-50 flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-4">
                     <h2 className="text-xl sm:text-2xl font-black text-slate-950 tracking-tight flex items-center gap-3">
-                        {showAll || search ? (search ? "Search Results" : "All Inventory") : "Recent Inventory"} <span className="text-sm font-bold bg-slate-50 text-slate-400 px-3 py-1 rounded-full">{recentProducts.length} {showAll ? `of ${productsCount}` : ""}</span>
+                        {search ? "Search Results" : "Inventory"} <span className="text-sm font-bold bg-slate-50 text-slate-400 px-3 py-1 rounded-full">{productsCount}</span>
                     </h2>
                     <div className="flex items-center gap-4">
                         <DashboardSearch />
@@ -108,10 +129,17 @@ export default async function AdminDashboard({
                         <tbody className="divide-y divide-slate-50">
                             {recentProducts.length > 0 ? (
                                 recentProducts.map((product) => (
-                                    <tr key={product.id} className="group hover:bg-slate-50/50 transition-colors">
+                                    <tr key={product.id} className="hover:bg-slate-50/50 transition-colors group">
                                         <td className="px-8 py-6">
                                             <div className="flex items-center gap-5">
-                                                <div className="w-16 h-16 rounded-2xl bg-slate-100 bg-[url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070')] bg-cover bg-center shrink-0 shadow-sm transition-transform group-hover:scale-105"></div>
+                                                <img
+                                                    src={product.image || "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070"}
+                                                    alt={product.name}
+                                                    width={64}
+                                                    height={64}
+                                                    loading="lazy"
+                                                    className="w-16 h-16 rounded-2xl shrink-0 shadow-sm object-cover"
+                                                />
                                                 <div className="flex flex-col">
                                                     <span className="font-black text-slate-900 text-lg tracking-tight group-hover:text-orange-700 transition-colors">{product.name}</span>
                                                     <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-1 flex items-center gap-1.5">
@@ -174,17 +202,31 @@ export default async function AdminDashboard({
                     </table>
                 </div>
 
-                <div className="p-8 bg-slate-50/50 border-t border-slate-50 flex justify-center">
-                    {showAll || search ? (
-                        <Link href="/admin/dashboard" className="text-slate-500 font-black text-[10px] uppercase tracking-widest flex items-center gap-2 hover:text-orange-700 transition-colors">
-                            View Recent Only <ArrowUpRight size={14} className="rotate-180" />
-                        </Link>
-                    ) : (
-                        <Link href="/admin/dashboard?view=all" className="text-slate-500 font-black text-[10px] uppercase tracking-widest flex items-center gap-2 hover:text-orange-700 transition-colors">
-                            View All Inventory <ArrowUpRight size={14} />
-                        </Link>
-                    )}
-                </div>
+                {productsCount > limit && (
+                    <div className="p-8 bg-slate-50/50 border-t border-slate-50 flex justify-between items-center">
+                        <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                            Showing {Math.min(productsCount, (page - 1) * limit + 1)} - {Math.min(productsCount, page * limit)} of {productsCount}
+                        </span>
+                        <div className="flex items-center gap-2">
+                            {page > 1 && (
+                                <Link
+                                    href={`/admin/dashboard?page=${page - 1}${search ? `&search=${search}` : ''}`}
+                                    className="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-600 font-bold text-xs hover:bg-slate-50 hover:text-slate-900 transition-colors"
+                                >
+                                    Previous
+                                </Link>
+                            )}
+                            {page < totalPages && (
+                                <Link
+                                    href={`/admin/dashboard?page=${page + 1}${search ? `&search=${search}` : ''}`}
+                                    className="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-600 font-bold text-xs hover:bg-slate-50 hover:text-slate-900 transition-colors"
+                                >
+                                    Next
+                                </Link>
+                            )}
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );
