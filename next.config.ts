@@ -12,6 +12,18 @@ const nextConfig: NextConfig = {
         hostname: '*.supabase.co',
       },
       {
+        protocol: 'https',
+        hostname: 'www.nerolac.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.bergerpaints.com',
+      },
+      {
+        protocol: 'http',
+        hostname: 'images.bergerpaints.com',
+      },
+      {
         protocol: 'http',
         hostname: 'localhost',
       },
