@@ -2,13 +2,11 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Menu, X, ShoppingBag, Phone, ChevronRight } from "lucide-react";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const [imgError, setImgError] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -31,29 +29,13 @@ export default function Navbar() {
                 <div className={`glass rounded-[2rem] border border-white/10 shadow-xl overflow-hidden px-6 md:px-10 py-4 flex items-center justify-between transition-all duration-300 ${scrolled ? "shadow-primary/20" : "shadow-transparent"}`}>
                     {/* Logo Section */}
                     <Link href="/" prefetch={true} className="flex items-center gap-3 group">
-                        {!imgError ? (
-                            <Image
-                                src="/images/logo.png"
-                                alt="Shreeraj Trading Company – Hardware & Colour Partner"
-                                title="Shreeraj Trading Company"
-                                width={240}
-                                height={48}
-                                className="h-[36px] w-auto md:h-[48px] group-hover:opacity-90 transition-opacity"
-                                loading="eager"
-                                fetchPriority="high"
-                                onError={() => setImgError(true)}
-                            />
-                        ) : (
-                            <div className="flex items-center gap-3">
-                                <div className="w-9 h-9 md:w-12 md:h-12 rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 bg-gradient-to-br from-primary to-red-800 border border-white/20">
-                                    <span className="text-base md:text-xl font-black text-white tracking-tighter">STC</span>
-                                </div>
-                                <div className="flex flex-col">
-                                    <span className="text-lg md:text-xl font-black tracking-tighter leading-none text-white">SHREERAJ</span>
-                                    <span className="text-[9px] md:text-[10px] font-black tracking-[0.2em] text-primary uppercase leading-none mt-1">Trading Co.</span>
-                                </div>
-                            </div>
-                        )}
+                        <div className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 group-hover:scale-105 transition-all duration-300 bg-gradient-to-br from-primary to-red-800 border border-white/20">
+                            <span className="text-xl font-black text-white tracking-tighter">STC</span>
+                        </div>
+                        <div className="flex flex-col">
+                            <span className="text-xl font-black tracking-tighter leading-none text-white">SHREERAJ</span>
+                            <span className="text-[10px] font-black tracking-[0.2em] text-primary uppercase leading-none mt-1">Trading Co.</span>
+                        </div>
                     </Link>
 
                     {/* Desktop Navigation */}

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ShoppingBag, Facebook, Twitter, Instagram, Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
 
 export default function Footer() {
@@ -12,16 +11,13 @@ export default function Footer() {
                     {/* Brand & Mission */}
                     <div className="space-y-8">
                         <Link href="/" prefetch={true} className="flex items-center gap-3">
-                            <Image
-                                src="/images/logo.png"
-                                alt="Shreeraj Trading Company – Hardware & Colour Partner"
-                                title="Shreeraj Trading Company"
-                                width={240}
-                                height={48}
-                                className="h-[36px] w-auto md:h-[48px] hover:opacity-90 transition-opacity"
-                                loading="eager"
-                                fetchPriority="high"
-                            />
+                            <div className="bg-primary p-2.5 rounded-xl shadow-lg shadow-primary/20">
+                                <ShoppingBag className="text-white w-6 h-6" />
+                            </div>
+                            <div className="flex flex-col">
+                                <span className="text-2xl font-black tracking-tighter leading-none text-white">SHREERAJ</span>
+                                <span className="text-[10px] font-black tracking-[0.2em] text-primary uppercase leading-none mt-1.5">Trading Co.</span>
+                            </div>
                         </Link>
                         <p className="text-slate-400 font-medium leading-relaxed max-w-xs">
                             Direct suppliers of premium hardware, paints, and building materials. Delivering excellence since 1995.
