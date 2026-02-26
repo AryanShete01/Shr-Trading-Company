@@ -103,7 +103,7 @@ export default function AboutPage() {
                             <div>
                                 <span className="text-[10px] font-black uppercase tracking-[0.5em] text-red-600 mb-6 block">Our Legacy Story</span>
                                 <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white mb-8 sm:mb-10 tracking-tighter leading-[1.1] md:leading-[0.9] break-words">
-                                    MORE THAN A <br /><span className="text-slate-400">SUPPLIER.</span>
+                                    MORE THAN A <br /><span className="text-slate-200">SUPPLIER.</span>
                                 </h2>
                                 <div className="space-y-6 sm:space-y-8 text-lg sm:text-xl text-slate-400 font-medium leading-relaxed mb-10">
                                     <p>
