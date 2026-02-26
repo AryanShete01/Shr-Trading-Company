@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Menu, X, ShoppingBag, Phone, ChevronRight } from "lucide-react";
 
 export default function Navbar() {
@@ -30,8 +29,8 @@ export default function Navbar() {
                 <div className={`glass rounded-[2rem] border border-white/10 shadow-xl overflow-hidden px-6 md:px-10 py-4 flex items-center justify-between transition-all duration-300 ${scrolled ? "shadow-primary/20" : "shadow-transparent"}`}>
                     {/* Logo Section */}
                     <Link href="/" prefetch={true} className="flex items-center gap-3 group">
-                        <div className="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden shadow-lg shadow-primary/20 group-hover:scale-105 transition-transform duration-300 bg-white border border-white/20 p-0.5">
-                            <Image src="/images/logo.png" alt="Shreeraj Trading Company Logo" width={48} height={48} priority className="w-full h-full object-contain rounded-[10px]" />
+                        <div className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 group-hover:scale-105 transition-all duration-300 bg-gradient-to-br from-primary to-red-800 border border-white/20">
+                            <span className="text-xl font-black text-white tracking-tighter">STC</span>
                         </div>
                         <div className="flex flex-col">
                             <span className="text-xl font-black tracking-tighter leading-none text-white">SHREERAJ</span>
