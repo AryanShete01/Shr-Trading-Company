@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { LayoutDashboard, ShoppingBag, MessageSquare, Globe, LogOut, Menu, X } from "lucide-react";
 import { signOut } from "next-auth/react";
 import { useState } from "react";
@@ -9,6 +10,7 @@ import { usePathname } from "next/navigation";
 export default function AdminSidebar() {
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
+    const [imgError, setImgError] = useState(false);
 
     const menuItems = [
         {
@@ -52,13 +54,29 @@ export default function AdminSidebar() {
             <aside className={`w-72 bg-slate-950 text-white flex flex-col fixed h-full z-[60] transition-transform duration-300 font-sans ${isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}>
                 <div className="p-8">
                     <div className="flex items-center justify-between mb-12">
-                        <div className="flex items-center gap-3 group">
-                            <div className="w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center text-white font-black text-xl group-hover:scale-110 transition-transform shadow-lg shadow-red-600/20">S</div>
-                            <div className="flex flex-col">
-                                <span className="text-lg font-black tracking-tighter leading-none">ADMIN <span className="text-red-500">PANEL</span></span>
-                                <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-1">Shreeraj Trading Co.</span>
-                            </div>
-                        </div>
+                        <Link href="/" className="flex items-center gap-3 group">
+                            {!imgError ? (
+                                <Image
+                                    src="/images/logo.png"
+                                    alt="Shreeraj Trading Company – Hardware & Colour Partner"
+                                    title="Shreeraj Trading Company"
+                                    width={240}
+                                    height={48}
+                                    className="h-[36px] w-auto md:h-[48px] group-hover:opacity-90 transition-opacity"
+                                    loading="eager"
+                                    fetchPriority="high"
+                                    onError={() => setImgError(true)}
+                                />
+                            ) : (
+                                <>
+                                    <div className="w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center text-white font-black text-xl group-hover:scale-110 transition-transform shadow-lg shadow-red-600/20">S</div>
+                                    <div className="flex flex-col">
+                                        <span className="text-lg font-black tracking-tighter leading-none">ADMIN <span className="text-red-500">PANEL</span></span>
+                                        <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-1">Shreeraj Trading Co.</span>
+                                    </div>
+                                </>
+                            )}
+                        </Link>
                         <button
                             onClick={() => setIsOpen(false)}
                             className="md:hidden text-slate-400 hover:text-white"
