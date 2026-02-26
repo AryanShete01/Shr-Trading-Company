@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X, ShoppingBag, Phone, ChevronRight } from "lucide-react";
 
 export default function Navbar() {
@@ -28,9 +29,9 @@ export default function Navbar() {
             <div className="standard-container">
                 <div className={`glass rounded-[2rem] border border-white/10 shadow-xl overflow-hidden px-6 md:px-10 py-4 flex items-center justify-between transition-all duration-300 ${scrolled ? "shadow-primary/20" : "shadow-transparent"}`}>
                     {/* Logo Section */}
-                    <Link href="/" className="flex items-center gap-3 group">
-                        <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-300">
-                            <ShoppingBag className="text-white w-5 h-5" />
+                    <Link href="/" prefetch={true} className="flex items-center gap-3 group">
+                        <div className="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden shadow-lg shadow-primary/20 group-hover:scale-105 transition-transform duration-300 bg-white border border-white/20 p-0.5">
+                            <Image src="/images/logo.jpg" alt="Shreeraj Trading Company Logo" width={48} height={48} priority className="w-full h-full object-contain rounded-[10px]" />
                         </div>
                         <div className="flex flex-col">
                             <span className="text-xl font-black tracking-tighter leading-none text-white">SHREERAJ</span>
@@ -44,6 +45,7 @@ export default function Navbar() {
                             <Link
                                 key={link.name}
                                 href={link.href}
+                                prefetch={true}
                                 className="px-5 py-2.5 rounded-full text-sm font-bold text-slate-400 hover:text-primary hover:bg-primary/5 transition-all duration-300"
                             >
                                 {link.name}
@@ -52,6 +54,7 @@ export default function Navbar() {
                         <div className="w-px h-6 bg-white/10 mx-4" />
                         <Link
                             href="/contact"
+                            prefetch={true}
                             className="bg-primary text-white px-6 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 hover:bg-primary-hover hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 active:scale-95"
                         >
                             Get Quote
@@ -76,6 +79,7 @@ export default function Navbar() {
                                 <Link
                                     key={link.name}
                                     href={link.href}
+                                    prefetch={true}
                                     onClick={() => setIsOpen(false)}
                                     className="px-6 py-4 rounded-2xl text-lg font-black text-white hover:bg-primary/5 hover:text-primary transition-all flex items-center justify-between group"
                                 >
@@ -100,6 +104,7 @@ export default function Navbar() {
                             </Link>
                             <Link
                                 href="/contact"
+                                prefetch={true}
                                 className="w-full bg-primary text-white py-5 rounded-2xl font-black text-center text-sm uppercase tracking-widest shadow-xl shadow-primary/20"
                                 onClick={() => setIsOpen(false)}
                             >

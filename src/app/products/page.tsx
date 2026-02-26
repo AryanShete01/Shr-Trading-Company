@@ -58,7 +58,7 @@ export default async function ProductsPage({
                 <div className="standard-container relative z-10">
                     <FadeIn delay={0.1}>
                         <nav className="flex items-center gap-2 text-slate-500 text-[10px] font-black uppercase tracking-[0.3em] mb-6">
-                            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                            <Link href="/" prefetch={true} className="hover:text-white transition-colors">Home</Link>
                             <ChevronRight size={12} />
                             <span className="text-red-500">Products Catalogue</span>
                         </nav>
@@ -105,6 +105,7 @@ export default async function ProductsPage({
                                         <Link
                                             key={category.id}
                                             href={category.id ? `/products?cat=${category.id}` : '/products'}
+                                            prefetch={true}
                                             className={`px-6 py-4 rounded-2xl text-sm font-bold transition-all duration-300 flex items-center justify-between group ${((!cat && category.id === "") || cat === category.id)
                                                 ? "bg-blue-500 text-white shadow-lg shadow-blue-500/20"
                                                 : "glass-dark text-slate-400 hover:bg-white/5 hover:text-white"
@@ -129,6 +130,7 @@ export default async function ProductsPage({
                                 </p>
                                 <Link
                                     href="/contact"
+                                    prefetch={true}
                                     className="w-full bg-white text-blue-600 py-5 rounded-2xl font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-blue-50 transition-colors shadow-xl"
                                 >
                                     Contact Desk <ArrowRight size={14} />
@@ -171,6 +173,7 @@ export default async function ProductsPage({
                                     </p>
                                     <Link
                                         href="/products"
+                                        prefetch={true}
                                         className="inline-flex items-center gap-2 bg-blue-500 text-white px-8 py-4 rounded-full font-black text-sm uppercase tracking-widest hover:bg-blue-600 transition-all shadow-xl shadow-blue-500/20"
                                     >
                                         Show Full Inventory

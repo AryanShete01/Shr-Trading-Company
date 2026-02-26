@@ -64,7 +64,7 @@ export default function ContactPage() {
                 <div className="standard-container relative z-10">
                     <FadeIn delay={0.1} direction="up" className="max-w-4xl">
                         <nav className="flex items-center gap-2 text-slate-500 text-[10px] font-black uppercase tracking-[0.3em] mb-10">
-                            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                            <Link href="/" prefetch={true} className="hover:text-white transition-colors">Home</Link>
                             <ChevronRight size={12} />
                             <span className="text-primary">Contact Protocol</span>
                         </nav>

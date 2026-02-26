@@ -1,5 +1,6 @@
 import { ShieldCheck, Users, TrendingUp, Handshake, MapPin, Phone, MessageCircle, Star, Search, BadgeCheck, Briefcase } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { FadeIn } from "@/components/animations/FadeIn";
@@ -81,9 +82,11 @@ export default function AboutPage() {
                             <div className="relative group">
                                 <div className="absolute inset-0 bg-red-600 rounded-[2rem] md:rounded-[4rem] rotate-3 scale-105 opacity-5 group-hover:rotate-0 transition-transform duration-700"></div>
                                 <div className="relative rounded-[2rem] md:rounded-[4rem] overflow-hidden shadow-3xl bg-[#020617] p-2 border border-white/5">
-                                    <img
+                                    <Image
                                         src="/images/about/shop.jpg"
                                         alt="Shreeraj Trading Company Storefront"
+                                        width={1200}
+                                        height={800}
                                         className="w-full h-auto max-h-[80vh] object-contain rounded-[1.5rem] md:rounded-[3.5rem] group-hover:scale-[1.02] transition-transform duration-1000"
                                     />
                                 </div>
@@ -155,10 +158,12 @@ export default function AboutPage() {
                         ].map((cert, i) => (
                             <StaggerItem key={i}>
                                 <div className="group relative aspect-[4/3] rounded-[2rem] sm:rounded-[3rem] overflow-hidden bg-white/5 border border-white/10 shadow-3xl hover:-translate-y-4 transition-all duration-500 flex items-center justify-center p-4 sm:p-6">
-                                    <img
+                                    <Image
                                         src={cert.img}
                                         alt={`${cert.title} Certificate`}
-                                        className="w-full h-full object-contain opacity-90 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 relative z-0"
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, 33vw"
+                                        className="object-contain opacity-90 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 relative z-0"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/40 to-transparent pointer-events-none z-10"></div>
                                     <div className="absolute bottom-6 sm:bottom-8 left-6 sm:left-8 right-6 sm:right-8 z-20 pointer-events-none">
@@ -192,6 +197,7 @@ export default function AboutPage() {
                             <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center items-center px-4 sm:px-0">
                                 <Link
                                     href="/products"
+                                    prefetch={true}
                                     className="w-full sm:w-auto px-8 sm:px-12 py-5 sm:py-7 rounded-2xl sm:rounded-3xl bg-white text-black font-black text-xs sm:text-sm uppercase tracking-[0.2em] hover:scale-105 active:scale-95 transition-all shadow-3xl flex items-center justify-center gap-4"
                                 >
                                     Browse Materials <TrendingUp size={18} className="text-red-600" />

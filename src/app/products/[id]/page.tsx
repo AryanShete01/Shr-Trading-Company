@@ -14,6 +14,7 @@ import {
     Info
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { formatPrice } from "@/lib/utils";
 
 export const revalidate = 60; // Revalidate every 60 seconds
@@ -45,9 +46,9 @@ export default async function ProductDetailsPage({
             <section className="pt-32 pb-12 bg-black border-b border-white/5">
                 <div className="standard-container">
                     <nav className="flex items-center gap-3 text-slate-500 text-[10px] font-black uppercase tracking-[0.3em]">
-                        <Link href="/" className="hover:text-primary transition-colors">Home</Link>
+                        <Link href="/" prefetch={true} className="hover:text-primary transition-colors">Home</Link>
                         <ChevronRight size={12} className="text-slate-600" />
-                        <Link href="/products" className="hover:text-primary transition-colors">Catalogue</Link>
+                        <Link href="/products" prefetch={true} className="hover:text-primary transition-colors">Catalogue</Link>
                         <ChevronRight size={12} className="text-slate-600" />
                         <span className="text-primary truncate max-w-[150px] md:max-w-none">{product.name}</span>
                     </nav>
@@ -60,10 +61,12 @@ export default async function ProductDetailsPage({
                         {/* Image Showcase */}
                         <div className="space-y-8 animate-in">
                             <div className="relative aspect-square rounded-[3rem] overflow-hidden bg-white/5 border border-white/10 shadow-2xl shadow-primary/20 group">
-                                <img
+                                <Image
                                     src={product.image || "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070"}
                                     alt={product.name}
-                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                                    fill
+                                    sizes="(max-width: 1200px) 100vw, 50vw"
+                                    className="object-cover group-hover:scale-105 transition-transform duration-1000"
                                 />
                                 <div className="absolute top-8 left-8">
                                     <span className="bg-black/60 backdrop-blur-md px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest text-white border border-white/10 shadow-xl">
@@ -142,6 +145,7 @@ export default async function ProductDetailsPage({
                                 </a>
                                 <Link
                                     href="/contact"
+                                    prefetch={true}
                                     className="px-10 py-6 rounded-3xl bg-white text-black font-black text-sm uppercase tracking-[0.2em] hover:bg-primary hover:text-white transition-all text-center flex items-center justify-center gap-3 shadow-xl"
                                 >
                                     Visit Store

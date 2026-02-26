@@ -1,5 +1,6 @@
 import { ShoppingCart, ArrowRight, Package } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { formatPrice } from "@/lib/utils";
 
 interface ProductCardProps {
@@ -22,10 +23,12 @@ export default function ProductCard({ product }: ProductCardProps) {
         <div className="group relative glass rounded-[2.5rem] border border-white/5 overflow-hidden hover-lift shadow-sm hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 flex flex-col h-full">
             {/* Image Container with Overlay */}
             <div className="relative aspect-square overflow-hidden bg-white/5">
-                <img
+                <Image
                     src={product.image || "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070"}
                     alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
                     <Link

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   Paintbrush,
@@ -83,10 +84,13 @@ export default function Home() {
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary/20 rounded-full blur-[100px] animate-pulse"></div>
           <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-secondary/20 rounded-full blur-[100px] animate-pulse delay-1000"></div>
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070"
             alt="Hardware Background"
-            className="w-full h-full object-cover opacity-30 transform scale-110 motion-safe:animate-[zoom_60s_infinite_alternate]"
+            fill
+            sizes="100vw"
+            priority
+            className="object-cover opacity-30 transform scale-110 motion-safe:animate-[zoom_60s_infinite_alternate]"
           />
         </div>
 
@@ -113,6 +117,7 @@ export default function Home() {
             <FadeIn delay={0.4} direction="up" className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto">
               <Link
                 href="/products"
+                prefetch={true}
                 className="group w-full sm:w-auto px-8 sm:px-10 py-5 sm:py-6 rounded-3xl bg-red-600 text-white font-black text-xs sm:text-sm uppercase tracking-widest hover:bg-red-700 transition-all hover:scale-[1.02] active:scale-95 shadow-2xl shadow-red-600/20 flex items-center justify-center gap-3 text-center"
               >
                 Browse Inventory <ChevronRight className="group-hover:translate-x-1 transition-transform" />
@@ -120,6 +125,7 @@ export default function Home() {
 
               <Link
                 href="/contact"
+                prefetch={true}
                 className="w-full sm:w-auto px-8 sm:px-10 py-5 sm:py-6 rounded-3xl bg-white/5 border border-white/10 text-white font-black text-xs sm:text-sm uppercase tracking-widest backdrop-blur-md hover:bg-white/10 transition-all flex items-center justify-center gap-3 text-center"
               >
                 Contact Shop <MapPin size={18} className="text-slate-400" />
@@ -169,6 +175,7 @@ export default function Home() {
               </div>
               <Link
                 href="/products"
+                prefetch={true}
                 className="group w-full sm:w-auto justify-center sm:justify-start px-8 py-5 rounded-2xl bg-white border border-white/10 text-black font-black text-xs uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all duration-500 shadow-sm flex items-center gap-3"
               >
                 Full Catalogue <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
@@ -181,6 +188,7 @@ export default function Home() {
               <StaggerItem key={cat.name} className="h-full">
                 <Link
                   href={cat.href}
+                  prefetch={true}
                   className="group relative glass-dark p-8 sm:p-10 rounded-[2rem] sm:rounded-[3rem] border border-white/5 shadow-sm hover:shadow-2xl hover:border-red-500/20 transition-all duration-700 overflow-hidden flex flex-col h-full"
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${cat.color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700`}></div>
@@ -213,10 +221,12 @@ export default function Home() {
         <div className="standard-container relative z-10">
           <div className="relative rounded-[3rem] sm:rounded-[5rem] overflow-hidden p-8 sm:p-16 md:p-32 text-center bg-black shadow-3xl">
             <div className="absolute inset-0 opacity-40">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1513467535987-fd81bc206228?q=80&w=1932"
                 alt="Store Interior"
-                className="w-full h-full object-cover"
+                fill
+                sizes="100vw"
+                className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-red-600/40 to-black/80"></div>
             </div>
@@ -245,6 +255,7 @@ export default function Home() {
                 </a>
                 <Link
                   href="/contact"
+                  prefetch={true}
                   className="w-full sm:w-auto px-8 sm:px-12 py-5 sm:py-7 rounded-2xl sm:rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 text-white font-black text-xs sm:text-sm uppercase tracking-[0.2em] hover:bg-white/20 transition-all text-center flex items-center justify-center gap-3 sm:gap-4 hover-lift"
                 >
                   Our Location <MapPin size={18} className="text-red-500" />

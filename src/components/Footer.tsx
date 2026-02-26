@@ -10,7 +10,7 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
                     {/* Brand & Mission */}
                     <div className="space-y-8">
-                        <Link href="/" className="flex items-center gap-3">
+                        <Link href="/" prefetch={true} className="flex items-center gap-3">
                             <div className="bg-primary p-2.5 rounded-xl shadow-lg shadow-primary/20">
                                 <ShoppingBag className="text-white w-6 h-6" />
                             </div>
@@ -46,7 +46,7 @@ export default function Footer() {
                                 { name: "Plumbing Materials", href: "/products?cat=plumbing" },
                             ].map((link) => (
                                 <li key={link.name}>
-                                    <Link href={link.href} className="hover:text-primary flex items-center gap-2 transition-colors group py-1.5">
+                                    <Link href={link.href} prefetch={true} className="hover:text-primary flex items-center gap-2 transition-colors group py-1.5">
                                         {link.name}
                                         <ArrowUpRight size={14} className="opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all" />
                                     </Link>
@@ -67,7 +67,7 @@ export default function Footer() {
                                 { name: "Admin Dashboard", href: "/admin/login" },
                             ].map((link) => (
                                 <li key={link.name}>
-                                    <Link href={link.href} className="hover:text-primary transition-colors block py-1.5">{link.name}</Link>
+                                    <Link href={link.href} prefetch={true} className="hover:text-primary transition-colors block py-1.5">{link.name}</Link>
                                 </li>
                             ))}
                         </ul>
