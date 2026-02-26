@@ -15,6 +15,11 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: "Shreeraj Trading Company | Your Trusted Hardware & Colour Partner",
   description: "Quality hardware, paints, electrical, and plumbing materials since 1995. Your one-stop shop for all building needs.",
+  icons: {
+    icon: [
+      { url: '/favicon.png', sizes: '96x96', type: 'image/png' },
+    ],
+  },
   verification: {
     google: "Y-VpZkqTvMXPj-xwobC-2LyZ_xBjR_OCNpwgyrkp9Rw",
   },
