@@ -81,13 +81,13 @@ export default function AboutPage() {
             </section>
 
             {/* Legacy Section */}
-            <section className="py-20 md:py-40 bg-white">
+            <section className="py-20 md:py-40 bg-[#020617]">
                 <div className="standard-container">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
                         <FadeIn direction="up">
                             <div className="relative group">
                                 <div className="absolute inset-0 bg-red-600 rounded-[2rem] md:rounded-[4rem] rotate-3 scale-105 opacity-5 group-hover:rotate-0 transition-transform duration-700"></div>
-                                <div className="relative rounded-[2rem] md:rounded-[4rem] overflow-hidden shadow-2xl bg-slate-50 p-2 border border-slate-100">
+                                <div className="relative rounded-[2rem] md:rounded-[4rem] overflow-hidden shadow-3xl bg-[#020617] p-2 border border-white/5">
                                     <Image
                                         src="/images/about/shop.jpg"
                                         alt="Shreeraj Trading Company Storefront"
@@ -102,43 +102,43 @@ export default function AboutPage() {
                         <FadeIn direction="up" delay={0.2}>
                             <div>
                                 <span className="text-[10px] font-black uppercase tracking-[0.5em] text-red-600 mb-6 block">Our Legacy Story</span>
-                                <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-slate-900 mb-8 sm:mb-10 tracking-tighter leading-[1.1] md:leading-[0.9] break-words">
-                                    MORE THAN A <br /><span className="text-slate-900">SUPPLIER.</span>
+                                <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white mb-8 sm:mb-10 tracking-tighter leading-[1.1] md:leading-[0.9] break-words">
+                                    MORE THAN A <br /><span className="text-white">SUPPLIER.</span>
                                 </h2>
-                                <div className="space-y-6 sm:space-y-8 text-lg sm:text-xl text-slate-600 font-medium leading-relaxed mb-10">
+                                <div className="space-y-6 sm:space-y-8 text-lg sm:text-xl text-slate-300 font-medium leading-relaxed mb-10">
                                     <p>
                                         Shreeraj Trading Company began with a singular mission: to eliminate the friction in high-end construction by providing immediate access to premium materials. What started in 1995 as a modest hardware shop in Akole has now evolved into the most comprehensive building materials supplier in Akole and the surrounding Ahilyanagar district.
                                     </p>
                                     <p>
                                         Our founders, Vikasrao Shete and Vijay Shete, recognized early on that local contractors and homeowners struggled to find reliable suppliers for structural and aesthetic projects. They built this hardware store near Akole with an uncompromising standard: to stock only genuine, ISI-certified products. Today, we are proud to be widely regarded as the best hardware shop in Akole because we put the success of our community's projects first.
                                     </p>
-                                    <h3 className="text-2xl font-black text-slate-900 mt-10 mb-4 tracking-tight">Akole's Most Trusted Paint and Accessories Hub</h3>
+                                    <h3 className="text-2xl font-black text-white mt-10 mb-4 tracking-tight">Akole's Most Trusted Paint and Accessories Hub</h3>
                                     <p>
                                         We are not just a hardware depot; we are also a specialized paint shop in Akole. Our dedication to visual architecture led us to become a leading Berger Paints dealer in Akole. We supply an enormous inventory of weather-resistant exterior paints, luxury interior emulsions, and industrial wood coatings. When local architects look for a colour shop in Akole that offers color consultation and exact machine mixing, they come directly to us.
                                     </p>
-                                    <h3 className="text-2xl font-black text-slate-900 mt-10 mb-4 tracking-tight">Your Destination for Plumbing and Electrical Items</h3>
+                                    <h3 className="text-2xl font-black text-white mt-10 mb-4 tracking-tight">Your Destination for Plumbing and Electrical Items</h3>
                                     <p>
                                         A sturdy building requires excellent internals. We hold massive stock of heavy-duty plumbing and electrical items in Akole, guaranteeing that local civil engineers have instant access to PVC/CPVC pipes, high-gauge wiring, and reliable brass fittings without project delays. Our expansive showroom floor and highly knowledgeable staff are designed to ensure you leave with precisely the materials you need—making us the only name you need to know for building supplies in Maharashtra.
                                     </p>
                                 </div>
 
-                                <div className="mb-12 p-6 rounded-[2rem] bg-slate-50 border border-slate-200 border-l-4 border-l-red-500 text-slate-900 shadow-sm">
+                                <div className="mb-12 p-6 rounded-[2rem] bg-white/5 border border-white/10 border-l-4 border-l-red-500 shadow-sm">
                                     <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-1">Founded By</p>
-                                    <p className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Vikasrao Shete <span className="text-red-600 mx-2">&</span> Vijay Shete</p>
+                                    <p className="text-xl sm:text-2xl font-black text-white tracking-tight">Vikasrao Shete <span className="text-red-500 mx-2">&</span> Vijay Shete</p>
                                 </div>
 
                                 <div className="flex flex-wrap flex-col sm:flex-row gap-4 sm:gap-6 mt-12 sm:mt-16">
-                                    <div className="flex items-center gap-4 bg-white px-6 sm:px-8 py-4 sm:py-5 rounded-2xl border border-slate-200 shadow-sm w-full sm:w-auto">
-                                        <div className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center text-red-600">
+                                    <div className="flex items-center gap-4 glass-dark px-6 sm:px-8 py-4 sm:py-5 rounded-2xl border border-white/5 shadow-sm w-full sm:w-auto">
+                                        <div className="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center text-red-500">
                                             <Briefcase size={20} />
                                         </div>
-                                        <span className="font-black text-xs uppercase tracking-widest text-slate-900">Trade Certified</span>
+                                        <span className="font-black text-xs uppercase tracking-widest text-white">Trade Certified</span>
                                     </div>
-                                    <div className="flex items-center gap-4 bg-white px-6 sm:px-8 py-4 sm:py-5 rounded-2xl border border-slate-200 shadow-sm w-full sm:w-auto">
-                                        <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
+                                    <div className="flex items-center gap-4 glass-dark px-6 sm:px-8 py-4 sm:py-5 rounded-2xl border border-white/5 shadow-sm w-full sm:w-auto">
+                                        <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500">
                                             <Star size={20} />
                                         </div>
-                                        <span className="font-black text-xs uppercase tracking-widest text-slate-900">Premium Dealer</span>
+                                        <span className="font-black text-xs uppercase tracking-widest text-white">Premium Dealer</span>
                                     </div>
                                 </div>
                             </div>
