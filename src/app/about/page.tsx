@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { ShieldCheck, Users, TrendingUp, Handshake, MapPin, Phone, MessageCircle, Star, Search, BadgeCheck, Briefcase } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -5,6 +6,11 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerContainer";
+
+export const metadata: Metadata = {
+    title: "About Us | Shreeraj Trading Company | Paint & Hardware Shop in Akole",
+    description: "Learn about Shreeraj Trading Company, the best hardware shop in Akole since 1995. We are the premier building materials supplier and Berger Paints dealer in Akole.",
+};
 
 export default function AboutPage() {
     return (
@@ -101,10 +107,18 @@ export default function AboutPage() {
                                 </h2>
                                 <div className="space-y-6 sm:space-y-8 text-lg sm:text-xl text-slate-400 font-medium leading-relaxed mb-10">
                                     <p>
-                                        Shreeraj Trading Company began with a singular mission: to eliminate the friction in high-end construction by providing immediate access to premium materials.
+                                        Shreeraj Trading Company began with a singular mission: to eliminate the friction in high-end construction by providing immediate access to premium materials. What started in 1995 as a modest <strong className="text-white">hardware shop in Akole</strong> has now evolved into the most comprehensive <strong className="text-white">building materials supplier in Akole</strong> and the surrounding Ahilyanagar district.
                                     </p>
                                     <p>
-                                        Over the decades, we have evolved from a local hardware shop into a regional authority on paints, plumbing components, and industrial-grade fasteners. Our growth is mirrored by the skylines of the communities we serve.
+                                        Our founders, Vikasrao Shete and Vijay Shete, recognized early on that local contractors and homeowners struggled to find reliable suppliers for structural and aesthetic projects. They built this <strong className="text-white">hardware store near Akole</strong> with an uncompromising standard: to stock only genuine, ISI-certified products. Today, we are proud to be widely regarded as the <strong className="text-white">best hardware shop in Akole</strong> because we put the success of our community's projects first.
+                                    </p>
+                                    <h3 className="text-2xl font-black text-white mt-10 mb-4 tracking-tight">Akole's Most Trusted Paint and Accessories Hub</h3>
+                                    <p>
+                                        We are not just a hardware depot; we are also a specialized <strong className="text-white">paint shop in Akole</strong>. Our dedication to visual architecture led us to become a leading <strong className="text-white">Berger Paints dealer in Akole</strong>. We supply an enormous inventory of weather-resistant exterior paints, luxury interior emulsions, and industrial wood coatings. When local architects look for a <strong className="text-white">colour shop in Akole</strong> that offers color consultation and exact machine mixing, they come directly to us.
+                                    </p>
+                                    <h3 className="text-2xl font-black text-white mt-10 mb-4 tracking-tight">Your Destination for Plumbing and Electrical Items</h3>
+                                    <p>
+                                        A sturdy building requires excellent internals. We hold massive stock of heavy-duty <strong className="text-white">plumbing and electrical items in Akole</strong>, guaranteeing that local civil engineers have instant access to PVC/CPVC pipes, high-gauge wiring, and reliable brass fittings without project delays. Our expansive showroom floor and highly knowledgeable staff are designed to ensure you leave with precisely the materials you need—making us the only name you need to know for building supplies in Maharashtra.
                                     </p>
                                 </div>
 

@@ -229,6 +229,39 @@ export default function ContactPage() {
                 </div>
             </section>
 
+            {/* SEO Local Authority Section */}
+            <section className="py-24 bg-[#020617] border-t border-white/5 relative">
+                <div className="standard-container">
+                    <FadeIn direction="up">
+                        <div className="max-w-4xl mx-auto glass-dark p-10 md:p-16 rounded-[3rem] border border-white/10 shadow-2xl">
+                            <h2 className="text-3xl md:text-5xl font-black text-white mb-8 tracking-tight">
+                                Connecting You to the Best Hardware Shop in Akole
+                            </h2>
+                            <div className="prose prose-invert prose-lg text-slate-400 font-medium leading-relaxed max-w-none space-y-6">
+                                <p>
+                                    At Shreeraj Trading Company, our doors are always open to discuss your next big project. Strategically located on the Akole-Sangamner Road in Akole, Maharashtra (422601), our <strong className="text-white">hardware store near Akole</strong> is positioned precisely where our community needs us most. Whether you need immediate delivery to a site in Ahilyanagar or you wish to view our materials in person, you'll find everything you need.
+                                </p>
+
+                                <h3 className="text-2xl font-black text-white mt-12 mb-4">Dedicated Supply Lines for Local Construction</h3>
+                                <p>
+                                    Trying to find a dependable <strong className="text-white">building materials supplier in Akole</strong>? We pride ourselves on maintaining an always-stocked inventory. Since we act as an authorized <strong className="text-white">Berger Paints dealer in Akole</strong>, you won't experience back-order delays for essential emulsions, primers, or custom-mixed palettes from our <strong className="text-white">colour shop in Akole</strong>.
+                                </p>
+
+                                <h3 className="text-2xl font-black text-white mt-12 mb-4">Immediate Access to Plumbing and Electrical Essentials</h3>
+                                <p>
+                                    We know that mechanical systems can fail unexpectedly. If you urgently need <strong className="text-white">plumbing and electrical items in Akole</strong>, simply drop a WhatsApp message to our digital desk (+91 99222 34646). Our inventory specialists will confirm stock instantly, so contractors can retrieve their vital PVC fittings and high-gauge MCBs right away from the <strong className="text-white">best hardware shop in Akole</strong>.
+                                </p>
+
+                                <h3 className="text-2xl font-black text-white mt-12 mb-4">Authentic Local Presence</h3>
+                                <p>
+                                    We are dedicated exclusively to providing premium support to our area. Operating as an established <strong className="text-white">hardware shop in Akole</strong> allows us to know the precise climatic and structural demands of Maharashtra's architecture. Contact us today via phone or visit the store to speak with our trained technical team, and experience the standard of service that has made Shreeraj Trading Company the most trusted name in regional construction supply since 1995.
+                                </p>
+                            </div>
+                        </div>
+                    </FadeIn>
+                </div>
+            </section>
+
             <Footer />
         </div>
     );

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import prisma from "@/lib/prisma";
 import ProductCard from "@/components/ProductCard";
 import Navbar from "@/components/Navbar";
@@ -6,6 +7,11 @@ import Link from "next/link";
 import { Search, Filter, Box, ArrowRight, ChevronRight, Paintbrush, Hammer, Zap, Droplets } from "lucide-react";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerContainer";
+
+export const metadata: Metadata = {
+    title: "Hardware & Paints Catalogue | Shreeraj Trading Company Akole",
+    description: "Browse the largest inventory of hardware tools, plumbing accessories, electrical items, and Berger Paints in Akole.",
+};
 
 export const revalidate = 60; // Revalidate every 60 seconds
 export default async function ProductsPage({
@@ -46,8 +52,28 @@ export default async function ProductsPage({
         { name: "Plumbing Materials", id: "plumbing", icon: <Droplets size={14} /> },
     ];
 
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": products.map((product, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "item": {
+                "@type": "Product",
+                "name": product.name,
+                "description": product.description || `Buy ${product.name} at Shreeraj Trading Company in Akole.`,
+                "image": product.image || "https://www.shreerajtradingcompany.com/images/logo.png",
+                "url": `https://www.shreerajtradingcompany.com/products/${product.id}`,
+            }
+        }))
+    };
+
     return (
         <div className="min-h-screen bg-[#020617] selection:bg-primary selection:text-white">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             <Navbar />
 
             {/* Premium Header */}
@@ -182,6 +208,39 @@ export default async function ProductsPage({
                             )}
                         </FadeIn>
                     </div>
+                </div>
+            </section>
+
+            {/* SEO Catalogue Content Section */}
+            <section className="py-24 bg-[#020617] border-t border-white/5 relative">
+                <div className="standard-container">
+                    <FadeIn direction="up">
+                        <div className="max-w-4xl mx-auto glass-dark p-10 md:p-16 rounded-[3rem] border border-white/10 shadow-2xl">
+                            <h2 className="text-3xl md:text-5xl font-black text-white mb-8 tracking-tight">
+                                Complete Inventory at Our Hardware Shop in Akole
+                            </h2>
+                            <div className="prose prose-invert prose-lg text-slate-400 font-medium leading-relaxed max-w-none space-y-6">
+                                <p>
+                                    As the premier <strong className="text-white">building materials supplier in Akole</strong>, Shreeraj Trading Company maintains a vast, meticulously curated catalogue. We categorize our inventory into specific professional divisions to ensure you locate the exact <strong className="text-white">hardware store near Akole</strong> products you need instantly.
+                                </p>
+
+                                <h3 className="text-2xl font-black text-white mt-12 mb-4">Official Berger Paints Dealer in Akole</h3>
+                                <p>
+                                    Our paint and coatings division holds everything necessary for professional decorators and DIY enthusiasts alike. Looking for a specialized <strong className="text-white">colour shop in Akole</strong>? As an authorized <strong className="text-white">Berger Paints dealer in Akole</strong>, our inventory features all grades of Berger exterior and interior paints, waterproofing solutions, wood finishes, and industrial protective coatings.
+                                </p>
+
+                                <h3 className="text-2xl font-black text-white mt-12 mb-4">Premier Source for Plumbing and Electrical Items</h3>
+                                <p>
+                                    Structural integrity starts from the inside. That is why civil contractors rely on us for their <strong className="text-white">plumbing and electrical items in Akole</strong>. Our catalogue contains heavy-duty structural PVC pipes, highly durable CPVC fittings, industrial-grade copper wiring, robust MCBs, and modular switches. Everything stocked in our <strong className="text-white">hardware shop in Akole</strong> is sourced directly from certified national manufacturers.
+                                </p>
+
+                                <h3 className="text-2xl font-black text-white mt-12 mb-4">Heavy-Duty Hardware and Fasteners</h3>
+                                <p>
+                                    Whether you need high-tensile fasteners, professional power tools, or precision hand tools, we supply equipment that stands up to punishing daily use. We take our reputation as the <strong className="text-white">best hardware shop in Akole</strong> seriously, ensuring that every screw, bolt, and drill we provide brings unparalleled strength to your construction projects across Ahilyanagar and Maharashtra.
+                                </p>
+                            </div>
+                        </div>
+                    </FadeIn>
                 </div>
             </section>
 
