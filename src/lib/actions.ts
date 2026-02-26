@@ -13,6 +13,7 @@ export async function createProduct(formData: FormData) {
     const imageFile = formData.get("image") as File | null;
     let imageUrl = "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070";
 
+    // If an image is provided immediately (handled for backward compatibility or direct upload)
     if (imageFile && imageFile.size > 0 && typeof imageFile !== "string") {
         const fileExt = imageFile.name.split('.').pop();
         const fileName = `${Math.random()}.${fileExt}`;
@@ -36,7 +37,7 @@ export async function createProduct(formData: FormData) {
         imageUrl = imageFile;
     }
 
-    await prisma.product.create({
+    const product = await prisma.product.create({
         data: {
             name,
             description,
@@ -48,7 +49,7 @@ export async function createProduct(formData: FormData) {
 
     revalidatePath("/products");
     revalidatePath("/admin/dashboard");
-    return { success: true };
+    return { success: true, product };
 }
 
 export async function updateProduct(id: string, formData: FormData) {
@@ -82,7 +83,7 @@ export async function updateProduct(id: string, formData: FormData) {
         imageUrl = imageFile;
     }
 
-    await prisma.product.update({
+    const product = await prisma.product.update({
         where: { id },
         data: {
             name,
@@ -96,7 +97,45 @@ export async function updateProduct(id: string, formData: FormData) {
     revalidatePath("/products");
     revalidatePath(`/products/${id}`);
     revalidatePath("/admin/dashboard");
-    return { success: true };
+    return { success: true, product };
+}
+
+export async function uploadProductImage(productId: string, formData: FormData) {
+    const imageFile = formData.get("image") as File;
+
+    if (!imageFile || imageFile.size === 0) {
+        return { error: "No image file provided" };
+    }
+
+    const fileExt = imageFile.name.split('.').pop();
+    const fileName = `${productId}_${Date.now()}.${fileExt}`;
+    const filePath = `${fileName}`;
+
+    const { error: uploadError } = await supabase.storage
+        .from('products')
+        .upload(filePath, imageFile, {
+            cacheControl: '3600',
+            upsert: false
+        });
+
+    if (uploadError) {
+        console.error("Supabase upload error:", uploadError);
+        return { error: "Failed to upload image to storage" };
+    }
+
+    const { data } = supabase.storage.from('products').getPublicUrl(filePath);
+    const imageUrl = data.publicUrl;
+
+    await prisma.product.update({
+        where: { id: productId },
+        data: { image: imageUrl },
+    });
+
+    revalidatePath("/products");
+    revalidatePath(`/products/${productId}`);
+    revalidatePath("/admin/dashboard");
+
+    return { success: true, imageUrl };
 }
 
 export async function deleteProduct(id: string) {

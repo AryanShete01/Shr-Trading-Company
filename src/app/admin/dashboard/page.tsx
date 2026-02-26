@@ -15,6 +15,7 @@ import Link from "next/link";
 import { formatPrice } from "@/lib/utils";
 import DeleteButton from "@/components/DeleteButton";
 import DashboardSearch from "@/components/DashboardSearch";
+import ProductTableClient from "@/components/ProductTableClient";
 
 export const dynamic = "force-dynamic";
 
@@ -102,132 +103,38 @@ export default async function AdminDashboard({
                 ))}
             </div>
 
-            {/* Recent Inventory Section */}
-            <div className="bg-white rounded-[2rem] sm:rounded-[40px] border border-slate-100 shadow-sm overflow-hidden">
-                <div className="p-6 sm:p-8 border-b border-slate-50 flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-4">
-                    <h2 className="text-xl sm:text-2xl font-black text-slate-950 tracking-tight flex items-center gap-3">
-                        {search ? "Search Results" : "Inventory"} <span className="text-sm font-bold bg-slate-50 text-slate-400 px-3 py-1 rounded-full">{productsCount}</span>
-                    </h2>
-                    <div className="flex items-center gap-4">
-                        <DashboardSearch />
-                        <button className="p-3 rounded-2xl bg-slate-50 text-slate-600 hover:bg-slate-100 transition-colors">
-                            <Filter size={20} />
-                        </button>
+            {/* Dashboard Content */}
+            <ProductTableClient
+                initialProducts={JSON.parse(JSON.stringify(recentProducts))}
+                totalCount={productsCount}
+            />
+
+            {/* Pagination Controls */}
+            {productsCount > limit && (
+                <div className="mt-8 p-8 bg-white rounded-[32px] border border-slate-100 shadow-sm flex justify-between items-center">
+                    <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                        Showing {Math.min(productsCount, (page - 1) * limit + 1)} - {Math.min(productsCount, page * limit)} of {productsCount}
+                    </span>
+                    <div className="flex items-center gap-2">
+                        {page > 1 && (
+                            <Link
+                                href={`/admin/dashboard?page=${page - 1}${search ? `&search=${search}` : ''}`}
+                                className="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-600 font-bold text-xs hover:bg-slate-50 hover:text-slate-900 transition-colors"
+                            >
+                                Previous
+                            </Link>
+                        )}
+                        {page < totalPages && (
+                            <Link
+                                href={`/admin/dashboard?page=${page + 1}${search ? `&search=${search}` : ''}`}
+                                className="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-600 font-bold text-xs hover:bg-slate-50 hover:text-slate-900 transition-colors"
+                            >
+                                Next
+                            </Link>
+                        )}
                     </div>
                 </div>
-
-                <div className="overflow-x-auto">
-                    <table className="w-full text-left border-collapse">
-                        <thead>
-                            <tr className="bg-slate-50/50">
-                                <th className="px-8 py-5 font-black text-slate-400 text-[10px] uppercase tracking-[0.2em]">Product Details</th>
-                                <th className="px-8 py-5 font-black text-slate-400 text-[10px] uppercase tracking-[0.2em]">Category</th>
-                                <th className="px-8 py-5 font-black text-slate-400 text-[10px] uppercase tracking-[0.2em]">Price</th>
-                                <th className="px-8 py-5 font-black text-slate-400 text-[10px] uppercase tracking-[0.2em] text-right">Management</th>
-                            </tr>
-                        </thead>
-                        <tbody className="divide-y divide-slate-50">
-                            {recentProducts.length > 0 ? (
-                                recentProducts.map((product) => (
-                                    <tr key={product.id} className="hover:bg-slate-50/50 transition-colors group">
-                                        <td className="px-8 py-6">
-                                            <div className="flex items-center gap-5">
-                                                <img
-                                                    src={product.image || "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070"}
-                                                    alt={product.name}
-                                                    width={64}
-                                                    height={64}
-                                                    loading="lazy"
-                                                    className="w-16 h-16 rounded-2xl shrink-0 shadow-sm object-cover"
-                                                />
-                                                <div className="flex flex-col">
-                                                    <span className="font-black text-slate-900 text-lg tracking-tight group-hover:text-orange-700 transition-colors">{product.name}</span>
-                                                    <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-1 flex items-center gap-1.5">
-                                                        Added {new Date(product.createdAt).toLocaleDateString()}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td className="px-8 py-6">
-                                            <span className="text-[10px] font-black uppercase tracking-[0.1em] bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full border border-blue-100/50">
-                                                {product.category}
-                                            </span>
-                                        </td>
-                                        <td className="px-8 py-6">
-                                            <div className="flex flex-col">
-                                                <span className="font-black text-slate-950 text-lg tracking-tight">{formatPrice(product.price)}</span>
-                                                <span className="text-[10px] text-emerald-500 font-bold uppercase tracking-wider">Stock Active</span>
-                                            </div>
-                                        </td>
-                                        <td className="px-8 py-6">
-                                            <div className="flex justify-end items-center gap-2">
-                                                <Link
-                                                    href={`/products/${product.id}`}
-                                                    target="_blank"
-                                                    className="w-10 h-10 flex items-center justify-center rounded-xl text-slate-400 hover:bg-slate-100 hover:text-orange-700 transition-all"
-                                                >
-                                                    <ExternalLink size={20} />
-                                                </Link>
-                                                <Link
-                                                    href={`/admin/dashboard/edit/${product.id}`}
-                                                    className="w-10 h-10 flex items-center justify-center rounded-xl text-slate-400 hover:bg-slate-100 hover:text-blue-600 transition-all"
-                                                >
-                                                    <Edit size={20} />
-                                                </Link>
-                                                <DeleteButton id={product.id} />
-                                            </div>
-                                        </td>
-                                    </tr>
-                                ))
-                            ) : (
-                                <tr>
-                                    <td colSpan={4} className="px-8 py-32 text-center">
-                                        <div className="flex flex-col items-center">
-                                            <div className="bg-slate-50 w-20 h-20 rounded-full flex items-center justify-center text-slate-300 mb-6">
-                                                <ShoppingBag size={40} />
-                                            </div>
-                                            <h3 className="text-xl font-black text-slate-900 mb-2">Inventory is empty</h3>
-                                            <p className="text-slate-400 font-medium max-w-xs mx-auto mb-8">Ready to grow? Add your first product to the catalogue.</p>
-                                            <Link
-                                                href="/admin/dashboard/new"
-                                                className="bg-slate-950 text-white px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-black transition-all shadow-xl shadow-slate-950/20"
-                                            >
-                                                Add First Product
-                                            </Link>
-                                        </div>
-                                    </td>
-                                </tr>
-                            )}
-                        </tbody>
-                    </table>
-                </div>
-
-                {productsCount > limit && (
-                    <div className="p-8 bg-slate-50/50 border-t border-slate-50 flex justify-between items-center">
-                        <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
-                            Showing {Math.min(productsCount, (page - 1) * limit + 1)} - {Math.min(productsCount, page * limit)} of {productsCount}
-                        </span>
-                        <div className="flex items-center gap-2">
-                            {page > 1 && (
-                                <Link
-                                    href={`/admin/dashboard?page=${page - 1}${search ? `&search=${search}` : ''}`}
-                                    className="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-600 font-bold text-xs hover:bg-slate-50 hover:text-slate-900 transition-colors"
-                                >
-                                    Previous
-                                </Link>
-                            )}
-                            {page < totalPages && (
-                                <Link
-                                    href={`/admin/dashboard?page=${page + 1}${search ? `&search=${search}` : ''}`}
-                                    className="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-600 font-bold text-xs hover:bg-slate-50 hover:text-slate-900 transition-colors"
-                                >
-                                    Next
-                                </Link>
-                            )}
-                        </div>
-                    </div>
-                )}
-            </div>
+            )}
         </div>
     );
 }

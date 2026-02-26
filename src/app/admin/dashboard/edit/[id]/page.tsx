@@ -128,17 +128,39 @@ export default function EditProductPage({
                     action={async (formData) => {
                         setSubmitting(true);
                         try {
-                            if (compressedFile) {
-                                formData.set("image", compressedFile);
-                            }
-                            const res = await updateProduct(product.id, formData);
+                            const metadataForm = new FormData();
+                            metadataForm.append("name", formData.get("name") || "");
+                            metadataForm.append("description", formData.get("description") || "");
+                            metadataForm.append("price", formData.get("price")?.toString() || "0");
+                            metadataForm.append("category", formData.get("category") || "");
+
+                            // Update metadata first (fast)
+                            const res = await updateProduct(product.id, metadataForm);
+
                             if (res?.success) {
-                                toast.success("Product updated successfully!");
+                                toast.success("Changes committed! Updating assets...", { icon: '⚡' });
                                 router.push("/admin/dashboard");
                                 router.refresh();
+
+                                // Background image upload if changed
+                                if (compressedFile) {
+                                    const imageForm = new FormData();
+                                    imageForm.append("image", compressedFile);
+
+                                    import("@/lib/actions").then(({ uploadProductImage }) => {
+                                        uploadProductImage(product.id, imageForm).then((imgRes) => {
+                                            if (imgRes.success) {
+                                                toast.success("Image updated successfully!");
+                                                router.refresh();
+                                            } else {
+                                                toast.error("Metadata updated, but image failed to sync.");
+                                            }
+                                        });
+                                    });
+                                }
                             }
                         } catch (error) {
-                            toast.error("Failed to update product");
+                            toast.error("Failed to commit changes");
                         } finally {
                             setSubmitting(false);
                         }

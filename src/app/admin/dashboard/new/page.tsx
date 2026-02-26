@@ -64,14 +64,44 @@ export default function NewProductPage() {
     const handleSubmit = async (formData: FormData) => {
         setLoading(true);
         try {
-            if (compressedFile) {
-                formData.set("image", compressedFile);
-            }
-            const res = await createProduct(formData);
-            if (res?.success) {
-                toast.success("Product created successfully!");
+            // 1. Prepare metadata subset of form data (remove image for initial save if we want it non-blocking)
+            // Actually, we can just send it all, but createProduct is now fast if it doesn't wait for upload.
+            // But to be truly non-blocking for images, we send metadata first.
+
+            const metadataForm = new FormData();
+            metadataForm.append("name", formData.get("name") || "");
+            metadataForm.append("description", formData.get("description") || "");
+            metadataForm.append("price", formData.get("price")?.toString() || "0");
+            metadataForm.append("category", formData.get("category") || "");
+
+            // Create product record first (fast)
+            const res = await createProduct(metadataForm);
+
+            if (res?.success && res.product) {
+                const newProductId = res.product.id;
+                toast.success("Product created! Image is uploading in background...", { icon: '🚀' });
+
+                // 2. Immediate redirect to dashboard for "instant" feel
                 router.push("/admin/dashboard");
                 router.refresh();
+
+                // 3. Background image upload (if a file was selected)
+                if (compressedFile) {
+                    const imageForm = new FormData();
+                    imageForm.append("image", compressedFile);
+
+                    // We don't 'await' this for the user, it happens in the background
+                    import("@/lib/actions").then(({ uploadProductImage }) => {
+                        uploadProductImage(newProductId, imageForm).then((imgRes) => {
+                            if (imgRes.success) {
+                                toast.success("Image processed and product active!");
+                                router.refresh();
+                            } else {
+                                toast.error("Metadata saved, but image upload failed.");
+                            }
+                        });
+                    });
+                }
             }
         } catch (error) {
             toast.error("Failed to create product");
