@@ -30,38 +30,38 @@ export default async function AdminDashboard({
     const limit = 15;
     const skip = (page - 1) * limit;
 
-    // Parallelize all DB operations
-    const [productsCount, enquiriesCount, recentProducts] = await Promise.all([
-        prisma.product.count({
-            where: search ? {
-                OR: [
-                    { name: { contains: search, mode: "insensitive" } },
-                    { category: { contains: search, mode: "insensitive" } },
-                ]
-            } : undefined,
-        }),
-        prisma.enquiry.count(),
-        prisma.product.findMany({
-            where: search ? {
-                OR: [
-                    { name: { contains: search, mode: "insensitive" } },
-                    { category: { contains: search, mode: "insensitive" } },
-                ]
-            } : undefined,
-            orderBy: { createdAt: "desc" },
-            skip,
-            take: limit,
-            // Optimized: only select essential fields
-            select: {
-                id: true,
-                name: true,
-                price: true,
-                category: true,
-                image: true,
-                createdAt: true
-            }
-        })
-    ]);
+    // Run DB operations sequentially to prevent MaxClientsInSessionMode connection pool exhaustion
+    const productsCount = await prisma.product.count({
+        where: search ? {
+            OR: [
+                { name: { contains: search, mode: "insensitive" } },
+                { category: { contains: search, mode: "insensitive" } },
+            ]
+        } : undefined,
+    });
+
+    const enquiriesCount = await prisma.enquiry.count();
+
+    const recentProducts = await prisma.product.findMany({
+        where: search ? {
+            OR: [
+                { name: { contains: search, mode: "insensitive" } },
+                { category: { contains: search, mode: "insensitive" } },
+            ]
+        } : undefined,
+        orderBy: { createdAt: "desc" },
+        skip,
+        take: limit,
+        // Optimized: only select essential fields
+        select: {
+            id: true,
+            name: true,
+            price: true,
+            category: true,
+            image: true,
+            createdAt: true
+        }
+    });
 
     const totalPages = Math.ceil(productsCount / limit);
 
