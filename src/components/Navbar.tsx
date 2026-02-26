@@ -31,7 +31,7 @@ export default function Navbar() {
                     {/* Logo Section */}
                     <Link href="/" prefetch={true} className="flex items-center gap-3 group">
                         <div className="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden shadow-lg shadow-primary/20 group-hover:scale-105 transition-transform duration-300 bg-white border border-white/20 p-0.5">
-                            <Image src="/images/logo.jpg" alt="Shreeraj Trading Company Logo" width={48} height={48} priority className="w-full h-full object-contain rounded-[10px]" />
+                            <Image src="/images/logo.png" alt="Shreeraj Trading Company Logo" width={48} height={48} priority className="w-full h-full object-contain rounded-[10px]" />
                         </div>
                         <div className="flex flex-col">
                             <span className="text-xl font-black tracking-tighter leading-none text-white">SHREERAJ</span>
