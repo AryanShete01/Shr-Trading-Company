@@ -232,22 +232,22 @@ export default function Home() {
 
               <div className="prose prose-invert prose-lg text-slate-400 font-medium leading-relaxed max-w-none space-y-6">
                 <p>
-                  Since 1995, <strong>Shreeraj Trading Company</strong> has stood as the premier <strong className="text-white">hardware shop in Akole</strong>, delivering excellence to local contractors, builders, and homeowners. We understand that finding reliable building materials is crucial for any construction or renovation project. That is why our <strong className="text-white">hardware store near Akole</strong> is fully stocked with everything you need, from foundational tools to premium finishing touches.
+                  Since 1995, <strong>Shreeraj Trading Company</strong> has stood as the premier hardware shop in Akole, delivering excellence to local contractors, builders, and homeowners. We understand that finding reliable building materials is crucial for any construction or renovation project. That is why our hardware store near Akole is fully stocked with everything you need, from foundational tools to premium finishing touches.
                 </p>
 
                 <h2 className="text-2xl font-black text-white mt-12 mb-4">Your Authorized Berger Paints Dealer in Akole</h2>
                 <p>
-                  When it comes to bringing your spaces to life, we are proud to be the leading <strong className="text-white">paint shop in Akole</strong>. As an authorized <strong className="text-white">Berger Paints dealer in Akole</strong>, we offer an extensive portfolio of interior and exterior emulsions, enamels, and protective coatings. Whether you are searching for a specialized color shade or simply browsing a reliable <strong className="text-white">colour shop in Akole</strong>, our expert staff provides professional technical support to ensure you get the perfect finish for your walls.
+                  When it comes to bringing your spaces to life, we are proud to be the leading paint shop in Akole. As an authorized Berger Paints dealer in Akole, we offer an extensive portfolio of interior and exterior emulsions, enamels, and protective coatings. Whether you are searching for a specialized color shade or simply browsing a reliable colour shop in Akole, our expert staff provides professional technical support to ensure you get the perfect finish for your walls.
                 </p>
 
                 <h2 className="text-2xl font-black text-white mt-12 mb-4">Complete Building Materials Supplier in Akole</h2>
                 <p>
-                  Beyond paints, we are widely recognized as a comprehensive <strong className="text-white">building materials supplier in Akole</strong>. Finding high-quality <strong className="text-white">plumbing and electrical items in Akole</strong> can be challenging, but our curated inventory guarantees that you receive genuine, ISI-marked products. From durable PVC pipes and modern bathroom fixtures to advanced MCBs and modular switchboards, we house the best brands in the industry to ensure the safety and longevity of your structures.
+                  Beyond paints, we are widely recognized as a comprehensive building materials supplier in Akole. Finding high-quality plumbing and electrical items in Akole can be challenging, but our curated inventory guarantees that you receive genuine, ISI-marked products. From durable PVC pipes and modern bathroom fixtures to advanced MCBs and modular switchboards, we house the best brands in the industry to ensure the safety and longevity of your structures.
                 </p>
 
                 <h2 className="text-2xl font-black text-white mt-12 mb-4">Why We Are the Top Hardware Store Near Akole</h2>
                 <p>
-                  Our commitment to authentic products, fair pricing, and decades of experience makes us the <strong className="text-white">best hardware shop in Akole</strong>. We do not just sell products; we partner with you to build your legacy. Our strategic location on Akole-Sangamner Road allows us to serve the entire Ahilyanagar district seamlessly. Whether you are undertaking a minor home repair or managing a large-scale industrial project, visit Shreeraj Trading Company for unmatched quality and trustworthy advice.
+                  Our commitment to authentic products, fair pricing, and decades of experience makes us the best hardware shop in Akole. We do not just sell products; we partner with you to build your legacy. Our strategic location on Akole-Sangamner Road allows us to serve the entire Ahilyanagar district seamlessly. Whether you are undertaking a minor home repair or managing a large-scale industrial project, visit Shreeraj Trading Company for unmatched quality and trustworthy advice.
                 </p>
               </div>
             </div>
