@@ -64,7 +64,6 @@ export default function Footer() {
                                 { name: "Products", href: "/products" },
                                 { name: "About Us", href: "/about" },
                                 { name: "Contact", href: "/contact" },
-                                { name: "Admin Dashboard", href: "/admin/login" },
                             ].map((link) => (
                                 <li key={link.name}>
                                     <Link href={link.href} prefetch={true} className="hover:text-primary transition-colors block py-1.5">{link.name}</Link>
