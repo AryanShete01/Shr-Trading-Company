@@ -16,7 +16,7 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-    const whatsappNumber = "918306063148";
+    const whatsappNumber = "919767287755";
     const isContact = product.priceType === "CONTACT";
     const isStarting = product.priceType === "STARTING";
 

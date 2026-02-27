@@ -286,7 +286,7 @@ export default function Home() {
 
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 w-full sm:w-auto px-4 sm:px-0">
                 <a
-                  href="https://wa.me/918306063148"
+                  href="https://wa.me/919767287755"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto px-8 sm:px-12 py-5 sm:py-7 rounded-2xl sm:rounded-3xl bg-white text-black font-black text-xs sm:text-sm uppercase tracking-[0.2em] hover:scale-105 active:scale-95 transition-all shadow-2xl flex items-center justify-center gap-3 sm:gap-4 group hover-lift"

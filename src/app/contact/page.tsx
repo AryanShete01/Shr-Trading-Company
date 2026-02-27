@@ -249,7 +249,7 @@ export default function ContactPage() {
 
                                 <h3 className="text-2xl font-black text-white mt-12 mb-4">Immediate Access to Plumbing and Electrical Essentials</h3>
                                 <p>
-                                    We know that mechanical systems can fail unexpectedly. If you urgently need plumbing and electrical items in Akole, simply drop a WhatsApp message to our digital desk (+91 99222 34646). Our inventory specialists will confirm stock instantly, so contractors can retrieve their vital PVC fittings and high-gauge MCBs right away from the best hardware shop in Akole.
+                                    We know that mechanical systems can fail unexpectedly. If you urgently need plumbing and electrical items in Akole, simply drop a WhatsApp message to our digital desk (+91 97672 87755). Our inventory specialists will confirm stock instantly, so contractors can retrieve their vital PVC fittings and high-gauge MCBs right away from the best hardware shop in Akole.
                                 </p>
 
                                 <h3 className="text-2xl font-black text-white mt-12 mb-4">Authentic Local Presence</h3>
