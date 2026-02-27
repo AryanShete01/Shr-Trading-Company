@@ -18,15 +18,24 @@ model Admin {
 }
 
 model Product {
-  id          String   @id @default(cuid())
-  name        String
-  description String
-  price       Float
-  image       String
-  category    String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  enquiries   Enquiry[]
+  id              String   @id @default(cuid())
+  name            String
+  description     String
+  price           Float?
+  priceType       String   @default("FIXED") // FIXED, STARTING, CONTACT
+  image           String
+  image2          String?
+  image3          String?
+  category        String
+  longDescription String?
+  variants        String?
+  applications    String?
+  whatsappMessage String?
+  seoTitle        String?
+  seoDescription  String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  enquiries       Enquiry[]
 }
 
 model Enquiry {
@@ -36,7 +45,7 @@ model Enquiry {
   message     String
   productLink String?
   productId   String?
-  product     Product? @relation(fields: [productId], references: [id])
+  product     Product? @relation(fields: [productId], references: [id], onDelete: Cascade)
   status      String   @default("NEW") // NEW, CONTACTED, CLOSED
   createdAt   DateTime @default(now())
 }

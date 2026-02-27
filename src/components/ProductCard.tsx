@@ -8,7 +8,8 @@ interface ProductCardProps {
         id: string;
         name: string;
         description: string;
-        price: number;
+        price: number | null;
+        priceType?: string;
         image: string;
         category: string;
     };
@@ -16,8 +17,20 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
     const whatsappNumber = "918306063148";
-    const message = encodeURIComponent(`Hello Shreeraj Trading! I'm interested in: ${product.name} (Price: ${formatPrice(product.price)}). Can you share more details?`);
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+    const isContact = product.priceType === "CONTACT";
+    const isStarting = product.priceType === "STARTING";
+
+    const priceDisplay = isContact
+        ? "Contact for Price"
+        : isStarting
+            ? `Starting from ${formatPrice(product.price)}`
+            : formatPrice(product.price);
+
+    const whatsappMsg = isContact || isStarting
+        ? `Hello, I’m interested in ${product.name} from Shreeraj Trading Company. Please share price and availability.`
+        : `Hello Shreeraj Trading! I'm interested in: ${product.name} (Price: ${formatPrice(product.price)}). Can you share more details?`;
+
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMsg)}`;
 
     return (
         <div className="group relative glass rounded-[2.5rem] border border-white/5 overflow-hidden hover-lift shadow-sm hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 flex flex-col h-full">
@@ -42,8 +55,8 @@ export default function ProductCard({ product }: ProductCardProps) {
 
                 {/* Quick Help Icon */}
                 <div className="absolute top-6 right-6 transform translate-x-16 group-hover:translate-x-0 transition-transform duration-500 delay-75 flex items-center gap-2">
-                    <span className="text-2xl font-black tracking-tight text-white group-hover:text-primary transition-colors">
-                        ₹{product.price.toLocaleString()}
+                    <span className="text-xl font-black tracking-tight text-white group-hover:text-primary transition-colors">
+                        {isContact ? "Contact" : formatPrice(product.price)}
                     </span>
                     <Link
                         href={`/products/${product.id}`}
@@ -63,7 +76,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                     <div className="flex flex-col gap-1">
                         <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Unit Price</p>
                         <p className="text-2xl font-black text-white leading-none tracking-tight">
-                            {formatPrice(product.price)}
+                            {priceDisplay}
                         </p>
                     </div>
                 </div>
@@ -78,13 +91,15 @@ export default function ProductCard({ product }: ProductCardProps) {
                             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.5)]"></div>
                             <span className="text-[10px] font-black uppercase tracking-widest leading-none text-slate-400">Available</span>
                         </div>
-                        <Link
-                            href={`/products/${product.id}`}
+                        <a
+                            href={whatsappUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="text-[11px] font-black uppercase tracking-[0.2em] text-primary flex items-center gap-2 hover:gap-4 transition-all group/btn"
                         >
-                            View Details
+                            {isContact || isStarting ? "Enquire Now" : "Buy Now"}
                             <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
-                        </Link>
+                        </a>
                     </div>
                 </div>
             </div>

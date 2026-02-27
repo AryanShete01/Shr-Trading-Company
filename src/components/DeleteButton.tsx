@@ -11,6 +11,7 @@ export default function DeleteButton({ id, onDeleteConfirm }: { id: string, onDe
     const handleDelete = () => {
         if (confirm("Are you sure you want to delete this product? This action cannot be undone.")) {
             // Optimistic update
+            console.log("Deletion confirmed for ID:", id);
             if (onDeleteConfirm) onDeleteConfirm();
 
             startTransition(async () => {
@@ -19,8 +20,6 @@ export default function DeleteButton({ id, onDeleteConfirm }: { id: string, onDe
                     toast.success("Product deleted successfully");
                 } catch (error) {
                     toast.error("Failed to delete product");
-                    // Note: In a full implementation, we'd revert the optimistic change here.
-                    // For this version, router.refresh() will eventually sync the state if it fails.
                 }
             });
         }

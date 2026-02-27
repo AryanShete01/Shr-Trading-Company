@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { LayoutDashboard, ShoppingBag, MessageSquare, Globe, LogOut, Menu, X } from "lucide-react";
+import { LayoutDashboard, ShoppingBag, MessageSquare, Globe, LogOut, Menu, X, Settings, Image as ImageIcon, FileText } from "lucide-react";
 import { signOut } from "next-auth/react";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
@@ -18,16 +18,34 @@ export default function AdminSidebar() {
             active: pathname === "/admin/dashboard",
         },
         {
-            name: "Products Management",
-            href: "/admin/dashboard?view=all",
+            name: "Catalog Categories",
+            href: "/admin/dashboard/categories",
             icon: ShoppingBag,
-            active: pathname === "/admin/dashboard" && typeof window !== 'undefined' && window.location.search.includes('view=all'),
+            active: pathname.startsWith("/admin/dashboard/categories"),
         },
         {
-            name: "Customer Enquiries",
+            name: "Support Pages",
+            href: "/admin/dashboard/pages",
+            icon: FileText,
+            active: pathname.startsWith("/admin/dashboard/pages"),
+        },
+        {
+            name: "Media Library",
+            href: "/admin/dashboard/media",
+            icon: ImageIcon,
+            active: pathname.startsWith("/admin/dashboard/media"),
+        },
+        {
+            name: "Enquiries",
             href: "/admin/dashboard/enquiries",
             icon: MessageSquare,
-            active: pathname === "/admin/dashboard/enquiries",
+            active: pathname.startsWith("/admin/dashboard/enquiries"),
+        },
+        {
+            name: "Settings",
+            href: "/admin/dashboard/settings",
+            icon: Settings,
+            active: pathname.startsWith("/admin/dashboard/settings"),
         },
     ];
 

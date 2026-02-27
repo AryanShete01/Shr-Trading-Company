@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useState, useTransition, useEffect } from "react";
 import Link from "next/link";
 import { Edit, ExternalLink, Package, ShoppingBag, Plus } from "lucide-react";
 import { formatPrice } from "@/lib/utils";
@@ -10,22 +10,37 @@ import DashboardSearch from "@/components/DashboardSearch";
 interface Product {
     id: string;
     name: string;
-    price: number;
+    price: number | null;
     category: string;
     image: string | null;
     createdAt: string | Date;
 }
 
-export default function ProductTableClient({ initialProducts, totalCount }: { initialProducts: Product[], totalCount: number }) {
-    const [products, setProducts] = useState(initialProducts);
-    const [isPending, startTransition] = useTransition();
+function DateRenderer({ date }: { date: string | Date }) {
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => setMounted(true), []);
 
-    // This component will eventually handle its own search/filter logic locally for ultra-fast feel
-    // But for now, we'll keep the server-side search but handle deletions optimistically.
+    if (!mounted) return <div className="h-4 w-24 bg-slate-50 animate-pulse rounded mt-1" />;
+
+    return (
+        <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-1 flex items-center gap-1.5">
+            Added {new Date(date).toLocaleDateString()}
+        </span>
+    );
+}
+
+export default function ProductTableClient({ initialProducts, totalCount }: { initialProducts: Product[], totalCount: number }) {
+    const [excludedIds, setExcludedIds] = useState<Set<string>>(new Set());
 
     const handleDeleteLocally = (id: string) => {
-        setProducts(prev => prev.filter(p => id !== p.id));
+        setExcludedIds(prev => {
+            const next = new Set(prev);
+            next.add(id);
+            return next;
+        });
     };
+
+    const products = initialProducts.filter(p => !excludedIds.has(p.id));
 
     return (
         <div className="bg-white rounded-[2rem] sm:rounded-[40px] border border-slate-100 shadow-sm overflow-hidden">
@@ -64,9 +79,7 @@ export default function ProductTableClient({ initialProducts, totalCount }: { in
                                             />
                                             <div className="flex flex-col">
                                                 <span className="font-black text-slate-900 text-lg tracking-tight group-hover:text-orange-700 transition-colors">{product.name}</span>
-                                                <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-1 flex items-center gap-1.5">
-                                                    Added {new Date(product.createdAt).toLocaleDateString()}
-                                                </span>
+                                                <DateRenderer date={product.createdAt} />
                                             </div>
                                         </div>
                                     </td>

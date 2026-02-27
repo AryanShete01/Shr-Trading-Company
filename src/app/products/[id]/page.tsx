@@ -35,8 +35,20 @@ export default async function ProductDetailsPage({
     }
 
     const whatsappNumber = "918306063148";
-    const message = encodeURIComponent(`Hello Shreeraj Trading! I'm interested in the product: ${product.name} (Price: ${formatPrice(product.price)}). Is this currently available?`);
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+    const isContact = product.priceType === "CONTACT";
+    const isStarting = product.priceType === "STARTING";
+
+    const priceDisplay = isContact
+        ? "Contact for Price"
+        : isStarting
+            ? `Starting from ${formatPrice(product.price)}`
+            : formatPrice(product.price);
+
+    const whatsappMsg = isContact || isStarting
+        ? `Hello, I’m interested in ${product.name} from Shreeraj Trading Company. Please share price and availability.`
+        : `Hello Shreeraj Trading! I'm interested in the product: ${product.name} (Price: ${formatPrice(product.price)}). Is this currently available?`;
+
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMsg)}`;
 
     return (
         <div className="min-h-screen bg-[#020617] text-white selection:bg-primary selection:text-white">
@@ -102,8 +114,8 @@ export default async function ProductDetailsPage({
                                     {product.name}
                                 </h1>
                                 <div className="flex items-baseline gap-3 mb-10">
-                                    <span className="text-4xl font-black text-white">{formatPrice(product.price)}</span>
-                                    <span className="text-slate-500 font-bold">Inc. Taxes</span>
+                                    <span className="text-4xl font-black text-white">{priceDisplay}</span>
+                                    {!isContact && <span className="text-slate-500 font-bold">Inc. Taxes</span>}
                                 </div>
                                 <div className="w-20 h-1.5 bg-primary rounded-full mb-10"></div>
                             </div>
@@ -141,7 +153,7 @@ export default async function ProductDetailsPage({
                                     className="flex-1 bg-primary text-white px-10 py-6 rounded-3xl font-black text-sm uppercase tracking-[0.2em] hover:bg-primary-hover transition-all hover:scale-[1.02] active:scale-95 shadow-2xl shadow-primary/20 flex items-center justify-center gap-3"
                                 >
                                     <MessageCircle size={20} fill="currentColor" />
-                                    Order via WhatsApp
+                                    {isContact || isStarting ? "Enquire via WhatsApp" : "Order via WhatsApp"}
                                 </a>
                                 <Link
                                     href="/contact"

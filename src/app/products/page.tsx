@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import prisma from "@/lib/prisma";
 import ProductCard from "@/components/ProductCard";
+import SearchInput from "@/components/SearchInput";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
@@ -101,16 +102,7 @@ export default async function ProductsPage({
                         </FadeIn>
 
                         <FadeIn delay={0.3} className="w-full lg:w-96">
-                            <form className="relative group">
-                                <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-red-500 transition-colors" size={20} />
-                                <input
-                                    type="text"
-                                    name="q"
-                                    defaultValue={q}
-                                    placeholder="Search by name or tech..."
-                                    className="w-full bg-white/5 border border-white/10 rounded-2xl py-5 pl-16 pr-6 text-white text-sm font-medium focus:outline-none focus:ring-2 focus:ring-red-500/50 transition-all"
-                                />
-                            </form>
+                            <SearchInput defaultValue={q || ""} />
                         </FadeIn>
                     </div>
                 </div>
